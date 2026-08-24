@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>脚本喵 - 自动化键鼠脚本可视化工作台</title>
+<link rel="icon" href="scriptmeow.png" type="image/png">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #181818; --panel: #232323; --ctrl: #2e2e2e; --border: #333;
+    --fg: #f0f0f0; --fg-d: #b8b8b8; --accent: #00d95f; --accent-d: #00a847;
+    --warn: #ffd479;
+  }
+  html, body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* 顶部导航 */
+  header { padding: 18px 0; border-bottom: 1px solid var(--border); background: rgba(0,0,0,.2); position: sticky; top: 0; backdrop-filter: blur(8px); z-index: 10; }
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; }
+  .brand img { width: 32px; height: 32px; }
+  .navlinks a { color: var(--fg-d); margin-left: 24px; font-size: 14px; }
+  .navlinks a:hover { color: var(--accent); text-decoration: none; }
+
+  /* Hero */
+  .hero { padding: 80px 0 60px; text-align: center; }
+  .hero img { width: 200px; height: auto; margin-bottom: 24px; }
+  .hero h1 { font-size: 44px; font-weight: 600; margin-bottom: 12px; letter-spacing: 1px; }
+  .hero .tag { color: var(--accent); font-size: 18px; margin-bottom: 32px; }
+  .hero .desc { color: var(--fg-d); font-size: 16px; max-width: 640px; margin: 0 auto 40px; }
+  .dl-btn {
+    display: inline-block; padding: 16px 48px; font-size: 18px; font-weight: 600;
+    background: var(--accent); color: #000; border-radius: 10px;
+    transition: all .15s ease;
+  }
+  .dl-btn:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; }
+  .dl-meta { margin-top: 14px; color: var(--fg-d); font-size: 13px; }
+
+  /* Sections */
+  section.block { padding: 60px 0; border-top: 1px solid var(--border); }
+  section h2 { font-size: 28px; margin-bottom: 12px; font-weight: 600; }
+  section h2 .num { color: var(--accent); margin-right: 8px; }
+  section .lead { color: var(--fg-d); font-size: 15px; margin-bottom: 32px; max-width: 720px; }
+
+  /* Features 网格 */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .feat { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .feat h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--fg); }
+  .feat p { color: var(--fg-d); font-size: 13px; line-height: 1.6; }
+  .feat .icon { font-size: 22px; margin-bottom: 10px; }
+
+  /* 动作类型列表 */
+  .actions { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+  .act { background: var(--ctrl); border-radius: 6px; padding: 8px 12px; font-size: 13px; color: var(--fg); }
+  .act .em { color: var(--accent); margin-right: 6px; }
+
+  /* 价格/版本卡 */
+  .versions { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .ver { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 24px; }
+  .ver h3 { font-size: 18px; margin-bottom: 6px; }
+  .ver .price { color: var(--accent); font-size: 22px; font-weight: 600; margin-bottom: 12px; }
+  .ver ul { list-style: none; padding: 0; }
+  .ver li { color: var(--fg-d); font-size: 13px; padding: 4px 0; }
+  .ver li::before { content: "✓ "; color: var(--accent); margin-right: 4px; }
+
+  /* 联系方式 */
+  .contact { display: flex; flex-wrap: wrap; gap: 16px; }
+  .cbox { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px 24px; }
+  .cbox .lbl { color: var(--fg-d); font-size: 13px; }
+  .cbox .val { font-size: 22px; font-weight: 600; color: var(--accent); margin-top: 4px; }
+
+  /* 底部 */
+  footer { padding: 30px 0; text-align: center; color: var(--fg-d); font-size: 13px; border-top: 1px solid var(--border); margin-top: 30px; }
+
+  /* 移动适配 */
+  @media (max-width: 640px) {
+    .hero { padding: 50px 0 40px; }
+    .hero h1 { font-size: 32px; }
+    .hero img { width: 140px; }
+    .dl-btn { padding: 14px 32px; font-size: 16px; }
+    section h2 { font-size: 22px; }
+    .navlinks { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="scriptmeow.png" alt="脚本喵">
+      <span>脚本喵</span>
+    </div>
+    <div class="navlinks">
+      <a href="#features">功能</a>
+      <a href="#actions">动作类型</a>
+      <a href="#download">下载</a>
+      <a href="#contact">联系</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap">
+    <img src="scriptmeow.png" alt="脚本喵">
+    <h1>脚本喵</h1>
+    <div class="tag">自动化键鼠脚本可视化工作台</div>
+    <p class="desc">无需编程基础, 像搭积木一样把鼠标点击、键盘输入、找图、循环、变量等动作组合成自动化脚本。一键运行, 重复性任务全部交给它。</p>
+    <a id="downloadBtn" class="dl-btn" href="#download">⬇ 一键下载 Windows 版</a>
+    <div class="dl-meta">单文件 EXE · 75 MB · Windows 10/11 · 64 位 · v1.0</div>
+  </div>
+</section>
+
+<!-- 功能 -->
+<section class="block" id="features">
+  <div class="wrap">
+    <h2><span class="num">01</span>核心功能</h2>
+    <p class="lead">桌面自动化工作的得力伙伴 — 从简单点击到复杂流程, 脚本喵帮你把每天重复的事全部跑完。</p>
+    <div class="grid">
+      <div class="feat">
+        <div class="icon">🖱</div>
+        <h3>鼠标键盘操作</h3>
+        <p>点击 / 双击 / 右键 / 拖拽 / 滚轮 / 移动 / 按键 / 组合键 — 支持起终点分开取点</p>
+      </div>
+      <div class="feat">
+        <div class="icon">🔍</div>
+        <h3>图像识别</h3>
+        <p>查找图片 / 点击图片 / 等待图片 — 内置框选截图, 相似度滑条, 区域搜索</p>
+      </div>
+      <div class="feat">
+        <div class="icon">🔁</div>
+        <h3>流程控制</h3>
+        <p>循环 / 跳出循环 / 条件分支 if / 跳转 / 子脚本调用 — 嵌套缩进</p>
+      </div>
+      <div class="feat">
+        <div class="icon">≡</div>
+        <h3>变量与表达式</h3>
+        <p>设置变量 + 表达式求值, 支持 + - × ÷ 运算, 配合条件实现动态流程</p>
+      </div>
+      <div class="feat">
+        <div class="icon">⏱</div>
+        <h3>运行前等待</h3>
+        <p>每个动作可单独设置运行前等待时间, 支持毫秒/秒/分钟/小时单位</p>
+      </div>
+      <div class="feat">
+        <div class="icon">🎯</div>
+        <h3>准星选窗口</h3>
+        <p>锁定目标窗口后脚本在窗口内运行, 坐标自适应窗口移动/缩放</p>
+      </div>
+      <div class="feat">
+        <div class="icon">📂</div>
+        <h3>框选截图</h3>
+        <p>F3 全屏框选截图, 自动存入「我的图片」, 一键填入图片动作</p>
+      </div>
+      <div class="feat">
+        <div class="icon">💬</div>
+        <h3>交互弹窗</h3>
+        <p>提示 / 确认 / 输入弹窗, 支持变量插值, 与流程灵活结合</p>
+      </div>
+      <div class="feat">
+        <div class="icon">📋</div>
+        <h3>JSON 源码编辑</h3>
+        <p>图形化 + JSON 源码双向同步, 高级用户可直接编写复杂脚本</p>
+      </div>
+      <div class="feat">
+        <div class="icon">🐱</div>
+        <h3>桌面伙伴脚本喵</h3>
+        <p>右下角可爱小猫陪你写脚本, 空闲时随机敲键盘, 编辑中活跃互动</p>
+      </div>
+      <div class="feat">
+        <div class="icon">🛡</div>
+        <h3>安全保护</h3>
+        <p>F8 紧急停止 + F7 暂停 + 鼠标甩左上角急停, 任何时候都能中止</p>
+      </div>
+      <div class="feat">
+        <div class="icon">📚</div>
+        <h3>脚本库</h3>
+        <p>多个脚本集中管理, 拖拽排序, 框选 + 拖动复制, 运行条件/监听动作嵌套</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 动作类型 -->
+<section class="block" id="actions">
+  <div class="wrap">
+    <h2><span class="num">02</span>26 种动作类型</h2>
+    <p class="lead">从基础到高级, 覆盖日常自动化所需的全部场景。完整版解锁全部动作; 免费版也能用 6 个核心动作体验完整工作流。</p>
+    <div class="actions">
+      <div class="act"><span class="em">🖱</span>点击</div>
+      <div class="act"><span class="em">🖱</span>双击</div>
+      <div class="act"><span class="em">🖱</span>右键</div>
+      <div class="act"><span class="em">🖱</span>移动鼠标</div>
+      <div class="act"><span class="em">🖱</span>拖拽</div>
+      <div class="act"><span class="em">◉</span>滚轮</div>
+      <div class="act"><span class="em">⏱</span>等待</div>
+      <div class="act"><span class="em">🔍</span>查找图片</div>
+      <div class="act"><span class="em">🔍</span>点击图片</div>
+      <div class="act"><span class="em">🔍</span>等待图片</div>
+      <div class="act"><span class="em">⌨</span>输入文字</div>
+      <div class="act"><span class="em">⌨</span>按键</div>
+      <div class="act"><span class="em">⌨</span>组合键</div>
+      <div class="act"><span class="em">⌨</span>按住键</div>
+      <div class="act"><span class="em">⌨</span>松开键</div>
+      <div class="act"><span class="em">🔁</span>循环</div>
+      <div class="act"><span class="em">⏹</span>跳出循环</div>
+      <div class="act"><span class="em">🔀</span>条件分支</div>
+      <div class="act"><span class="em">⤵</span>跳转</div>
+      <div class="act"><span class="em">⇄</span>运行子脚本</div>
+      <div class="act"><span class="em">≡</span>设置变量</div>
+      <div class="act"><span class="em">+</span>变量+</div>
+      <div class="act"><span class="em">−</span>变量-</div>
+      <div class="act"><span class="em">💬</span>提示弹窗</div>
+      <div class="act"><span class="em">❓</span>确认弹窗</div>
+      <div class="act"><span class="em">✎</span>输入弹窗</div>
+      <div class="act"><span class="em">⏰</span>定时停止</div>
+    </div>
+  </div>
+</section>
+
+<!-- 版本 -->
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">03</span>版本与授权</h2>
+    <p class="lead">免费试用 6 个核心动作完整工作流; 一次性买断完整版解锁全部功能与定时启动。</p>
+    <div class="versions">
+      <div class="ver">
+        <h3>免费版</h3>
+        <div class="price">¥0</div>
+        <ul>
+          <li>点击 / 移动鼠标 / 循环 / 跳出循环 / 点击图片 / 输入文字</li>
+          <li>可视化编辑 + 框选截图 + 脚本喵伙伴</li>
+          <li>定时启动与准星选窗不可用</li>
+          <li>无需注册, 下载即用</li>
+        </ul>
+      </div>
+      <div class="ver">
+        <h3>完整版 (一次性买断)</h3>
+        <div class="price">联系作者</div>
+        <ul>
+          <li>全部 26 种动作类型</li>
+          <li>定时启动 + 准星选窗</li>
+          <li>机器码绑定, 一台设备永久使用</li>
+          <li>作者 QQ / 电话一对一支持</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 下载 -->
+<section class="block" id="download">
+  <div class="wrap" style="text-align:center">
+    <h2><span class="num">04</span>下载</h2>
+    <p class="lead" style="margin:0 auto 32px">单文件 EXE, 下载即用 — 无需安装 Python 环境, 双击即启动。</p>
+    <a id="downloadBtn2" class="dl-btn" href="#">⬇ 下载 脚本喵 v1.0 (75 MB)</a>
+    <div class="dl-meta" style="margin-top:14px">
+      Windows 10 / 11 · 64 位 · 首次启动约 8 秒解压 · 鼠标移到屏幕左上角可紧急停止
+    </div>
+    <p style="margin-top:32px; color: var(--fg-d); font-size:13px">
+      使用说明: 双击 EXE 启动 → 首页新建脚本 → 选中步骤在右侧填参数 → F5 或 ▶ 按钮运行<br>
+      内置文档: 右上角 ⚙ 设置 → 关于 / 快捷键 / 行为偏好
+    </p>
+  </div>
+</section>
+
+<!-- 联系 -->
+<section class="block" id="contact">
+  <div class="wrap">
+    <h2><span class="num">05</span>联系方式</h2>
+    <p class="lead">购买授权 / 使用问题 / 定制功能, 随时联系作者。</p>
+    <div class="contact">
+      <div class="cbox">
+        <div class="lbl">QQ</div>
+        <div class="val">184082626</div>
+      </div>
+      <div class="cbox">
+        <div class="lbl">电话</div>
+        <div class="val">13870170818</div>
+      </div>
+      <div class="cbox">
+        <div class="lbl">授权获取</div>
+        <div class="val" style="font-size:14px; line-height:1.5">
+          启动软件 → ⚙ 设置 → 授权与激活 →<br>
+          复制本机机器码发给作者 → 作者返回激活码 → 输入激活
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 脚本喵 · 让自动化更简单 · v1.0 · <a href="#download">下载</a>
+  </div>
+</footer>
+
+<script>
+// 下载按钮: 部署完成后由部署脚本注入 DOWNLOAD_URL
+const DEFAULT_DL = 'https://b65bb4931b71411c97d3b7b2825549ac.app.workbuddy.link/%E8%84%9A%E6%9C%AC%E5%96%B5.exe';
+const params = new URLSearchParams(location.search);
+const url = params.get('dl') || DEFAULT_DL;
+if (url) {
+  document.getElementById('downloadBtn').href = url;
+  document.getElementById('downloadBtn2').href = url;
+}
+</script>
+
+</body>
+</html>
