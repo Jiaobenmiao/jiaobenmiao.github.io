@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoBot 激活码生成器</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    background: #f5f6f8; color: #222; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center; padding: 16px;
+  }
+  .card {
+    background: #fff; border-radius: 14px; padding: 28px 24px;
+    max-width: 480px; width: 100%; box-shadow: 0 4px 24px rgba(0,0,0,.08);
+  }
+  h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .sub { color: #888; font-size: 13px; margin-bottom: 20px; }
+  label { display: block; font-size: 13px; color: #555; margin: 12px 0 6px; }
+  input {
+    width: 100%; padding: 12px 14px; font-size: 16px; letter-spacing: 1px;
+    border: 1.5px solid #ddd; border-radius: 8px; outline: none;
+    font-family: Consolas, Menlo, monospace;
+  }
+  input:focus { border-color: #4a7dff; }
+  button {
+    width: 100%; margin-top: 18px; padding: 13px; font-size: 15px;
+    background: #4a7dff; color: #fff; border: 0; border-radius: 8px;
+    cursor: pointer; font-weight: 600;
+  }
+  button:active { background: #3a66d6; }
+  .result {
+    margin-top: 16px; padding: 16px; background: #f0f4ff; border-radius: 8px;
+    display: none;
+  }
+  .result .lbl { font-size: 12px; color: #777; margin-bottom: 6px; }
+  .result .code {
+    font-family: Consolas, Menlo, monospace; font-size: 22px;
+    font-weight: 700; letter-spacing: 2px; color: #1a4fcc;
+    word-break: break-all; user-select: all;
+  }
+  .copy {
+    margin-top: 10px; display: inline-block; padding: 6px 14px;
+    background: #e8eefc; color: #1a4fcc; border-radius: 6px; font-size: 13px;
+    cursor: pointer;
+  }
+  .err { color: #d33; font-size: 13px; margin-top: 10px; display: none; }
+  .hint { margin-top: 14px; font-size: 12px; color: #aaa; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>AutoBot 激活码生成器</h1>
+  <div class="sub">作者端工具 · 输入用户发来的机器码，生成对应激活码</div>
+
+  <label for="mc">用户机器码</label>
+  <input id="mc" placeholder="例如 76C9-8666-D81C-2227" autocapitalize="characters" autocomplete="off">
+
+  <button onclick="gen()">生成激活码</button>
+
+  <div class="result" id="res">
+    <div class="lbl">激活码（发给用户）</div>
+    <div class="code" id="code"></div>
+    <span class="copy" onclick="copyCode()">复制</span>
+  </div>
+  <div class="err" id="err">请输入有效的机器码（格式 XXXX-XXXX-XXXX-XXXX）</div>
+
+  <div class="hint">提示：机器码可从软件「设置 → 激活」页复制。<br>本页面所有计算在本地完成，不会上传任何数据。</div>
+</div>
+
+<script>
+// 密钥必须与 license.py 中的 SECRET 一致（hex 编码 b"AutoBot-Xingchen-2026-Lic#Key$7"）
+const SECRET_HEX = "4175746F426F742D58696E676368656E2D323032362D4C6963234B65792437";
+const SECRET = new Uint8Array(SECRET_HEX.match(/.{2}/g).map(h => parseInt(h, 16)));
+
+async function hmacSha256(keyBytes, message) {
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey("raw", keyBytes, { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const sig = await crypto.subtle.sign("HMAC", key, enc.encode(message));
+  return new Uint8Array(sig);
+}
+
+function b32encode(bytes) {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+  let bits = 0, value = 0, out = "";
+  for (let i = 0; i < bytes.length; i++) {
+    value = (value << 8) | bytes[i]; bits += 8;
+    while (bits >= 5) { out += alphabet[(value >>> (bits - 5)) & 31]; bits -= 5; }
+  }
+  if (bits > 0) out += alphabet[(value << (5 - bits)) & 31];
+  return out;
+}
+
+async function gen() {
+  document.getElementById("err").style.display = "none";
+  document.getElementById("res").style.display = "none";
+  const mc = document.getElementById("mc").value.trim().toUpperCase();
+  if (!/^[0-9A-F]{4}(-[0-9A-F]{4}){3}$/.test(mc)) {
+    document.getElementById("err").style.display = "block";
+    return;
+  }
+  const sig = await hmacSha256(SECRET, mc);
+  const b32 = b32encode(sig).replace(/=+$/, "").slice(0, 20);
+  const code = b32.match(/.{1,4}/g).join("-");
+  document.getElementById("code").textContent = code;
+  document.getElementById("res").style.display = "block";
+}
+
+function copyCode() {
+  const t = document.getElementById("code").textContent;
+  navigator.clipboard.writeText(t).then(() => {
+    const c = document.querySelector(".copy");
+    c.textContent = "已复制 ✓";
+    setTimeout(() => c.textContent = "复制", 1200);
+  });
+}
+document.getElementById("mc").addEventListener("keydown", e => { if (e.key === "Enter") gen(); });
+</script>
+</body>
+</html>
