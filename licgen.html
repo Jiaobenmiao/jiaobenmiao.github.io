@@ -71,7 +71,7 @@
 
 <script>
 // 密钥必须与 license.py 中的 SECRET 一致（hex 编码 b"AutoBot-Xingchen-2026-Lic#Key$7"）
-const SECRET_HEX = "4175746F426F742D58696E676368656E2D323032362D4C6963234B65792437";
+const SECRET_HEX = "4A69616F62656E4D69616F2D323032362D4C69634052322151377745";
 const SECRET = new Uint8Array(SECRET_HEX.match(/.{2}/g).map(h => parseInt(h, 16)));
 
 async function hmacSha256(keyBytes, message) {
