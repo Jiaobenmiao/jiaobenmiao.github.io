@@ -306,7 +306,7 @@ const DEFAULT_DL = 'https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.link/
 const params = new URLSearchParams(location.search);
 const url = params.get('dl') || DEFAULT_DL;
 if (url) {
-  document.getElementById('downloadBtn').href = url;
+  document.getElementById('downloadBtn').href = INST_URL;
   document.getElementById('downloadBtn2').href = url;
 }
 </script>
