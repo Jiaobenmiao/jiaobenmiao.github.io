@@ -90,7 +90,7 @@
   </div>
   <div class="err" id="err">请输入有效的机器码（格式 XXXX-XXXX-XXXX-XXXX）</div>
 
-  <div class="hint">提示：机器码可从软件「设置 → 激活」页复制。<br>本页面所有计算在本地完成，不会上传任何数据。<br>永久码 = 完整版; 7/15/30/90 天码 = 限时完整版 (到期自动退回免费版)。</div>
+  <div class="hint">提示：机器码可从软件「设置 → 激活」页复制。<br>本页面所有计算在本地完成，不会上传任何数据。<br>永久码 = 完整版; 7/15/30/90 天码 = 限时完整版 (到期自动退回免费版)。<br>同一设备码每次生成结果不同 (含随机盐), 每个激活码仅对绑定设备有效。</div>
 </div>
 
 <script>
@@ -130,9 +130,12 @@ async function gen() {
     return;
   }
   const days = getDays();
-  const sig = await hmacSha256(SECRET, `${mc}|${days}`);
-  const b32 = b32encode(sig).replace(/=+$/, "").slice(0, 18);
-  const code = (String(days).padStart(2, "0") + b32).match(/.{1,4}/g).join("-");
+  // 随机盐 (4 位 base32), 保证同一机器码每次生成的激活码不同
+  const salt = Array.from(crypto.getRandomValues(new Uint8Array(4)))
+    .map(b => "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"[b % 32]).join("");
+  const sig = await hmacSha256(SECRET, `${mc}|${days}|${salt}`);
+  const b32 = b32encode(sig).replace(/=+$/, "").slice(0, 14);
+  const code = (String(days).padStart(2, "0") + salt + b32).match(/.{1,4}/g).join("-");
   document.getElementById("code").textContent = code;
   document.getElementById("meta").textContent = days === 0 ? "✅ 永久完整版" : `⏰ 限时 ${days} 天完整版 (到期自动退回免费版)`;
   document.getElementById("res").style.display = "block";
