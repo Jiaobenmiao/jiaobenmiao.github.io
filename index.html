@@ -49,82 +49,129 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #181818; --panel: #232323; --ctrl: #2e2e2e; --border: #333;
-    --fg: #f0f0f0; --fg-d: #b8b8b8; --accent: #00d95f; --accent-d: #00a847;
-    --warn: #ffd479;
+    --bg: #ffffff; --bg-soft: #f7f8fa; --panel: #ffffff;
+    --border: #e5e7eb; --border-d: #d0d7de;
+    --text: #1f2328; --text-d: #656d76; --text-d2: #8c959f;
+    --accent: #2ea9dd; --accent-d: #1e88e5; --accent-soft: rgba(46,169,221,.08);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md: 0 6px 24px rgba(0,0,0,.08);
+    --shadow-lg: 0 18px 48px rgba(46,169,221,.18);
   }
-  html, body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
-  a { color: var(--accent); text-decoration: none; }
+  html, body { background: var(--bg); color: var(--text); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  a { color: var(--accent-d); text-decoration: none; }
   a:hover { text-decoration: underline; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-
-  /* 顶部导航 */
-  header { padding: 18px 0; border-bottom: 1px solid var(--border); background: rgba(0,0,0,.2); position: sticky; top: 0; backdrop-filter: blur(8px); z-index: 10; }
+  header { padding: 16px 0; background: rgba(255,255,255,.85); border-bottom: 1px solid var(--border); position: sticky; top: 0; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100; }
   .nav { display: flex; align-items: center; justify-content: space-between; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; }
-  .brand img { width: 32px; height: 32px; }
-  .navlinks a { color: var(--fg-d); margin-left: 24px; font-size: 14px; }
-  .navlinks a:hover { color: var(--accent); text-decoration: none; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--text); }
+  .brand img { width: 30px; height: 30px; border-radius: 7px; }
+  .navlinks { display: flex; align-items: center; gap: 4px; }
+  .navlinks a { color: var(--text-d); margin-left: 20px; font-size: 14px; padding: 4px 0; }
+  .navlinks a:hover { color: var(--accent-d); text-decoration: none; }
+  .navlinks a.cur { color: var(--accent-d); font-weight: 600; }
+  .nav-dl { margin-left: 22px; background: var(--accent); color: #fff !important; font-weight: 600; padding: 8px 18px; border-radius: 8px; font-size: 13px !important; box-shadow: 0 2px 8px rgba(46,169,221,.25); }
+  .nav-dl:hover { background: var(--accent-d); text-decoration: none; }
+  .hamburger { display: none; background: none; border: 1px solid var(--border); color: var(--text); font-size: 18px; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
 
-  /* Hero */
-  .hero { padding: 80px 0 60px; text-align: center; }
-  .hero img { width: 200px; height: auto; margin-bottom: 24px; }
-  .hero h1 { font-size: 44px; font-weight: 600; margin-bottom: 12px; letter-spacing: 1px; }
-  .hero .tag { color: var(--accent); font-size: 18px; margin-bottom: 32px; }
-  .hero .desc { color: var(--fg-d); font-size: 16px; max-width: 640px; margin: 0 auto 40px; }
-  .dl-btn {
-    display: inline-block; padding: 16px 48px; font-size: 18px; font-weight: 600;
-    background: var(--accent); color: #000; border-radius: 10px;
-    transition: all .15s ease;
-  }
-  .dl-btn:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; }
-  .dl-meta { margin-top: 14px; color: var(--fg-d); font-size: 13px; }
+  .hero { padding: 72px 0 48px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .hero-left .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-soft); color: var(--accent-d); font-size: 13px; padding: 5px 14px; border-radius: 999px; margin-bottom: 20px; font-weight: 500; }
+  .hero-left h1 { font-size: 44px; font-weight: 800; line-height: 1.25; margin-bottom: 18px; color: var(--text); letter-spacing: .3px; }
+  .hero-left h1 .hl { color: var(--accent-d); }
+  .hero-left .desc { color: var(--text-d); font-size: 15.5px; max-width: 540px; margin-bottom: 30px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 13px 30px; font-size: 15px; font-weight: 700; background: var(--accent); color: #fff; border-radius: 10px; box-shadow: 0 4px 14px rgba(46,169,221,.25); transition: all .18s; }
+  .btn-primary:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; box-shadow: 0 8px 22px rgba(46,169,221,.3); }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; font-size: 15px; font-weight: 600; background: transparent; color: var(--text); border: 1px solid var(--border-d); border-radius: 10px; transition: all .18s; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-d); text-decoration: none; }
+  .hero-meta { color: var(--text-d2); font-size: 13px; }
+  .hero-meta b { color: var(--text); }
 
-  /* Sections */
-  section.block { padding: 60px 0; border-top: 1px solid var(--border); }
-  section h2 { font-size: 28px; margin-bottom: 12px; font-weight: 600; }
-  section h2 .num { color: var(--accent); margin-right: 8px; }
-  section .lead { color: var(--fg-d); font-size: 15px; margin-bottom: 32px; max-width: 720px; }
+  .hero-right .window { background: #fff; border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; }
+  .hero-right .bar { background: #f1f3f5; border-bottom: 1px solid var(--border); padding: 11px 14px; display: flex; align-items: center; gap: 7px; }
+  .hero-right .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .hero-right .d1 { background: #ff5f57; } .hero-right .d2 { background: #febc2e; } .hero-right .d3 { background: #28c840; }
+  .hero-right .ttl { margin-left: auto; font-size: 12px; color: var(--text-d2); }
+  .hero-right .wbody { padding: 24px; background: linear-gradient(135deg, #f9fbfd, #eaf5fb); display: flex; align-items: center; justify-content: center; min-height: 280px; }
+  .hero-right .wbody img { width: 86%; height: auto; max-width: 380px; }
 
-  /* Features 网格 */
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-  .feat { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
-  .feat h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--fg); }
-  .feat p { color: var(--fg-d); font-size: 13px; line-height: 1.6; }
-  .feat .icon { font-size: 22px; margin-bottom: 10px; }
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 36px 0 56px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .metric { text-align: center; }
+  .metric .n { font-size: 30px; font-weight: 800; color: var(--text); }
+  .metric .n .u { color: var(--accent-d); font-size: 18px; margin-left: 2px; }
+  .metric .l { font-size: 13px; color: var(--text-d); margin-top: 4px; }
 
-  /* 动作类型列表 */
-  .actions { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
-  .act { background: var(--ctrl); border-radius: 6px; padding: 8px 12px; font-size: 13px; color: var(--fg); }
-  .act .em { color: var(--accent); margin-right: 6px; }
+  section.block { padding: 64px 0; }
+  section h2 { font-size: 30px; margin-bottom: 10px; font-weight: 800; color: var(--text); letter-spacing: .3px; }
+  section h2 .num { color: var(--accent-d); margin-right: 10px; font-weight: 700; }
+  section .lead { color: var(--text-d); font-size: 15px; margin-bottom: 36px; max-width: 720px; }
+  .center { text-align: center; }
+  .center .lead { margin-left: auto; margin-right: auto; }
 
-  /* 价格/版本卡 */
-  .versions { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-  .ver { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 24px; }
-  .ver h3 { font-size: 18px; margin-bottom: 6px; }
-  .ver .price { color: var(--accent); font-size: 22px; font-weight: 600; margin-bottom: 12px; }
-  .ver ul { list-style: none; padding: 0; }
-  .ver li { color: var(--fg-d); font-size: 13px; padding: 4px 0; }
-  .ver li::before { content: "✓ "; color: var(--accent); margin-right: 4px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+  .feat { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 22px; transition: all .2s; }
+  .feat:hover { border-color: rgba(46,169,221,.45); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .feat .ico { width: 44px; height: 44px; border-radius: 11px; background: var(--accent-soft); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 14px; color: var(--accent-d); }
+  .feat h3 { font-size: 15px; font-weight: 700; margin-bottom: 7px; color: var(--text); }
+  .feat p { color: var(--text-d); font-size: 13.5px; line-height: 1.65; }
 
-  /* 联系方式 */
-  .contact { display: flex; flex-wrap: wrap; gap: 16px; }
-  .cbox { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px 24px; }
-  .cbox .lbl { color: var(--fg-d); font-size: 13px; }
-  .cbox .val { font-size: 22px; font-weight: 600; color: var(--accent); margin-top: 4px; }
+  .actions { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+  .act { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 9px; padding: 10px 14px; font-size: 13.5px; color: var(--text); transition: all .15s; }
+  .act:hover { border-color: rgba(46,169,221,.4); }
+  .act .em { color: var(--accent-d); margin-right: 7px; }
 
-  /* 底部 */
-  footer { padding: 30px 0; text-align: center; color: var(--fg-d); font-size: 13px; border-top: 1px solid var(--border); margin-top: 30px; }
+  .versions { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; align-items: stretch; }
+  .ver { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 28px 26px; display: flex; flex-direction: column; transition: all .2s; }
+  .ver:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .ver.hot { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow-lg); position: relative; }
+  .ver.hot::before { content: "推荐"; position: absolute; top: -10px; left: 22px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 999px; letter-spacing: .5px; }
+  .ver h3 { font-size: 17px; font-weight: 800; margin-bottom: 4px; color: var(--text); }
+  .ver .price { color: var(--accent-d); font-size: 28px; font-weight: 800; margin: 12px 0 4px; }
+  .ver .psub { color: var(--text-d); font-size: 12.5px; margin-bottom: 18px; }
+  .ver ul { list-style: none; padding: 0; flex: 1; }
+  .ver li { color: var(--text-d); font-size: 13.5px; padding: 7px 0; border-bottom: 1px dashed var(--border); }
+  .ver li:last-child { border-bottom: none; }
+  .ver li::before { content: "✓ "; color: var(--accent-d); font-weight: 700; margin-right: 4px; }
+  .ver li.off { color: var(--text-d2); }
+  .ver li.off::before { content: "✕ "; color: #ccc; }
+  .ver .vbtn { margin-top: 22px; text-align: center; }
+  .ver .vbtn a { display: block; padding: 12px; border-radius: 9px; font-weight: 700; font-size: 14px; background: var(--accent); color: #fff; box-shadow: 0 4px 12px rgba(46,169,221,.2); }
+  .ver .vbtn a.plain { background: var(--bg-soft); color: var(--text); border: 1px solid var(--border-d); box-shadow: none; }
+  .ver .vbtn a:hover { text-decoration: none; filter: brightness(1.05); }
 
-  /* 移动适配 */
-  @media (max-width: 640px) {
-    .hero { padding: 50px 0 40px; }
-    .hero h1 { font-size: 32px; }
-    .hero img { width: 140px; }
-    .dl-btn { padding: 14px 32px; font-size: 16px; }
-    section h2 { font-size: 22px; }
-    .navlinks { display: none; }
+  .faq { max-width: 780px; margin: 0 auto; }
+  details.faq-item { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 11px; margin-bottom: 10px; }
+  details.faq-item summary { cursor: pointer; padding: 16px 20px; font-size: 14.5px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--accent-d); font-size: 20px; font-weight: 700; }
+  details.faq-item[open] summary::after { content: "-"; }
+  details.faq-item .fa { padding: 0 20px 16px; color: var(--text-d); font-size: 13.5px; }
+
+  .contact { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .cbox { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 20px 30px; text-align: center; min-width: 180px; }
+  .cbox .lbl { color: var(--text-d); font-size: 12.5px; }
+  .cbox .val { font-size: 20px; font-weight: 700; color: var(--accent-d); margin-top: 4px; }
+
+  .download-cta { text-align: center; padding: 56px 0; background: linear-gradient(135deg, #f0f8fd, #e3f1fa); border-radius: 18px; border: 1px solid var(--border); }
+  .download-cta h2 { margin-bottom: 14px; }
+  .download-cta .lead { margin: 0 auto 28px; }
+
+  footer { padding: 34px 0; text-align: center; color: var(--text-d2); font-size: 13px; border-top: 1px solid var(--border); margin-top: 20px; }
+  footer a { color: var(--text-d); }
+
+  @media (max-width: 800px) {
+    .hamburger { display: block; }
+    .navlinks { display: none; position: absolute; top: 60px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); flex-direction: column; align-items: stretch; padding: 10px 24px 16px; }
+    .navlinks.open { display: flex; }
+    .navlinks a { margin: 0; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .navlinks .nav-dl { margin: 12px 0 0; text-align: center; }
+    .hero { padding: 48px 0 36px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero-left h1 { font-size: 32px; }
+    .hero-right .wbody { min-height: 200px; }
+    .metrics { grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 28px 0; }
+    section h2 { font-size: 24px; }
   }
 </style>
 </head>
@@ -132,141 +179,114 @@
 
 <header>
   <div class="wrap nav">
-    <div class="brand">
-      <img src="scriptmeow.png" alt="脚本喵">
-      <span>脚本喵</span>
-    </div>
-    <div class="navlinks">
+    <a class="brand" href="index.html"><img src="scriptmeow.png" alt="脚本喵"><span>脚本喵</span></a>
+    <div class="navlinks" id="navLinks">
       <a href="index.html">首页</a>
       <a href="download.html">下载</a>
       <a href="tutorial.html">教程</a>
       <a href="changelog.html">更新日志</a>
       <a href="activate.html">激活码</a>
+      <a class="nav-dl" href="#download">立即下载</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="菜单">=</button>
   </div>
 </header>
 
-<!-- Hero -->
 <section class="hero">
   <div class="wrap">
-    <img src="scriptmeow.png" alt="脚本喵">
-    <h1>脚本喵</h1>
-    <div class="tag">自动化键鼠脚本可视化工作台</div>
-    <p class="desc">无需编程基础, 像搭积木一样把鼠标点击、键盘输入、找图、循环、变量等动作组合成自动化脚本。一键运行, 重复性任务全部交给它。</p>
-    <a id="downloadBtn" class="dl-btn" href="#download">⬇ 下载安装版 (带安装向导)</a>
-    <div class="dl-meta">安装向导 · 10 MB · Windows 10/11 · 64 位 · v1.3.14 (内含 76 MB 主程序)</div><div class="dl-meta" style="margin-top:6px">喜欢免安装单文件? 点此下载 <a href="https://b65bb4931b71411c97d3b7b2825549ac.app.workbuddy.link/%E8%84%9A%E6%9C%AC%E5%96%B5.exe" style="color:var(--accent)">单文件版 (76 MB, 双击即用)</a></div><div class="dl-meta">已启用国内高速下载源; 若下载慢, 点此使用 <a href="https://jiaobenmiao.github.io/%E8%84%9A%E6%9C%AC%E5%96%B5.exe" style="color:var(--accent)">GitHub 备用下载</a></div>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="badge">桌面伙伴 · 可视化拖拽 · 免编程</div>
+        <h1>像搭积木一样<br>组合出你的<span class="hl">自动化</span>脚本</h1>
+        <p class="desc">脚本喵是一款 Windows 自动化键鼠脚本可视化工作台。鼠标点击、键盘输入、图像识别、循环分支、变量运算... 像搭积木一样把动作拖拽组合, 一键运行。每天重复的事交给脚本喵, 你的时间和专注力留给自己。</p>
+        <div class="hero-btns">
+          <a class="btn-primary" href="#download">立即下载 v1.3.14</a>
+          <a class="btn-ghost" href="tutorial.html">查看教程</a>
+        </div>
+        <div class="hero-meta"><b>免费下载</b> · Windows 10 / 11 · 64 位 · 内置 26 种动作 · 国内高速源</div>
+      </div>
+      <div class="hero-right">
+        <div class="window">
+          <div class="bar">
+            <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+            <span class="ttl">脚本喵</span>
+          </div>
+          <div class="wbody">
+            <img src="scriptmeow.png" alt="脚本喵桌面伙伴">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- 功能 -->
+<div class="wrap">
+  <div class="metrics">
+    <div class="metric"><div class="n">26<span class="u">种</span></div><div class="l">动作类型</div></div>
+    <div class="metric"><div class="n">0<span class="u">元</span></div><div class="l">免费试用</div></div>
+    <div class="metric"><div class="n">1<span class="u">次</span></div><div class="l">买断永久授权</div></div>
+    <div class="metric"><div class="n">3<span class="u">秒</span></div><div class="l">上手无需编程</div></div>
+  </div>
+</div>
+
 <section class="block" id="features">
   <div class="wrap">
     <h2><span class="num">01</span>核心功能</h2>
     <p class="lead">桌面自动化工作的得力伙伴 — 从简单点击到复杂流程, 脚本喵帮你把每天重复的事全部跑完。</p>
     <div class="grid">
-      <div class="feat">
-        <div class="icon">🖱</div>
-        <h3>鼠标键盘操作</h3>
-        <p>点击 / 双击 / 右键 / 拖拽 / 滚轮 / 移动 / 按键 / 组合键 — 支持起终点分开取点</p>
-      </div>
-      <div class="feat">
-        <div class="icon">🔍</div>
-        <h3>图像识别</h3>
-        <p>查找图片 / 点击图片 / 等待图片 — 内置框选截图, 相似度滑条, 区域搜索</p>
-      </div>
-      <div class="feat">
-        <div class="icon">🔁</div>
-        <h3>流程控制</h3>
-        <p>循环 / 跳出循环 / 条件分支 if / 跳转 / 子脚本调用 — 嵌套缩进</p>
-      </div>
-      <div class="feat">
-        <div class="icon">≡</div>
-        <h3>变量与表达式</h3>
-        <p>设置变量 + 表达式求值, 支持 + - × ÷ 运算, 配合条件实现动态流程</p>
-      </div>
-      <div class="feat">
-        <div class="icon">⏱</div>
-        <h3>运行前等待</h3>
-        <p>每个动作可单独设置运行前等待时间, 支持毫秒/秒/分钟/小时单位</p>
-      </div>
-      <div class="feat">
-        <div class="icon">🎯</div>
-        <h3>准星选窗口</h3>
-        <p>锁定目标窗口后脚本在窗口内运行, 坐标自适应窗口移动/缩放</p>
-      </div>
-      <div class="feat">
-        <div class="icon">📂</div>
-        <h3>框选截图</h3>
-        <p>F3 全屏框选截图, 自动存入「我的图片」, 一键填入图片动作</p>
-      </div>
-      <div class="feat">
-        <div class="icon">💬</div>
-        <h3>交互弹窗</h3>
-        <p>提示 / 确认 / 输入弹窗, 支持变量插值, 与流程灵活结合</p>
-      </div>
-      <div class="feat">
-        <div class="icon">📋</div>
-        <h3>JSON 源码编辑</h3>
-        <p>图形化 + JSON 源码双向同步, 高级用户可直接编写复杂脚本</p>
-      </div>
-      <div class="feat">
-        <div class="icon">🐱</div>
-        <h3>桌面伙伴脚本喵</h3>
-        <p>右下角可爱小猫陪你写脚本, 空闲时随机敲键盘, 编辑中活跃互动</p>
-      </div>
-      <div class="feat">
-        <div class="icon">🛡</div>
-        <h3>安全保护</h3>
-        <p>F8 紧急停止 + F7 暂停 + 鼠标甩左上角急停, 任何时候都能中止</p>
-      </div>
-      <div class="feat">
-        <div class="icon">📚</div>
-        <h3>脚本库</h3>
-        <p>多个脚本集中管理, 拖拽排序, 框选 + 拖动复制, 运行条件/监听动作嵌套</p>
-      </div>
+      <div class="feat"><div class="ico">M</div><h3>鼠标键盘操作</h3><p>点击 / 双击 / 右键 / 拖拽 / 滚轮 / 移动 / 按键 / 组合键 — 支持起终点分开取点</p></div>
+      <div class="feat"><div class="ico">F</div><h3>图像识别</h3><p>查找图片 / 点击图片 / 等待图片 — 内置框选截图, 相似度滑条, 区域搜索</p></div>
+      <div class="feat"><div class="ico">L</div><h3>流程控制</h3><p>循环 / 跳出循环 / 条件分支 if / 跳转 / 子脚本调用 — 嵌套缩进</p></div>
+      <div class="feat"><div class="ico">V</div><h3>变量与表达式</h3><p>设置变量 + 表达式求值, 支持 + - x / 运算, 配合条件实现动态流程</p></div>
+      <div class="feat"><div class="ico">T</div><h3>运行前等待</h3><p>每个动作可单独设置运行前等待时间, 支持毫秒/秒/分钟/小时单位</p></div>
+      <div class="feat"><div class="ico">W</div><h3>准星选窗口</h3><p>锁定目标窗口后脚本在窗口内运行, 坐标自适应窗口移动/缩放</p></div>
+      <div class="feat"><div class="ico">S</div><h3>框选截图</h3><p>F3 全屏框选截图, 自动存入「我的图片」, 一键填入图片动作</p></div>
+      <div class="feat"><div class="ico">D</div><h3>交互弹窗</h3><p>提示 / 确认 / 输入弹窗, 支持变量插值, 与流程灵活结合</p></div>
+      <div class="feat"><div class="ico">J</div><h3>JSON 源码编辑</h3><p>图形化 + JSON 源码双向同步, 高级用户可直接编写复杂脚本</p></div>
+      <div class="feat"><div class="ico">C</div><h3>桌面伙伴脚本喵</h3><p>右下角可爱小猫陪你写脚本, 空闲时随机敲键盘, 编辑中活跃互动</p></div>
+      <div class="feat"><div class="ico">P</div><h3>安全保护</h3><p>F8 紧急停止 + F7 暂停 + 鼠标甩左上角急停, 任何时候都能中止</p></div>
+      <div class="feat"><div class="ico">B</div><h3>脚本库</h3><p>多个脚本集中管理, 拖拽排序, 框选 + 拖动复制, 运行条件/监听动作嵌套</p></div>
     </div>
   </div>
 </section>
 
-<!-- 动作类型 -->
 <section class="block" id="actions">
   <div class="wrap">
     <h2><span class="num">02</span>26 种动作类型</h2>
     <p class="lead">从基础到高级, 覆盖日常自动化所需的全部场景。完整版解锁全部动作; 免费版也能用 6 个核心动作体验完整工作流。</p>
     <div class="actions">
-      <div class="act"><span class="em">🖱</span>点击</div>
-      <div class="act"><span class="em">🖱</span>双击</div>
-      <div class="act"><span class="em">🖱</span>右键</div>
-      <div class="act"><span class="em">🖱</span>移动鼠标</div>
-      <div class="act"><span class="em">🖱</span>拖拽</div>
-      <div class="act"><span class="em">◉</span>滚轮</div>
-      <div class="act"><span class="em">⏱</span>等待</div>
-      <div class="act"><span class="em">🔍</span>查找图片</div>
-      <div class="act"><span class="em">🔍</span>点击图片</div>
-      <div class="act"><span class="em">🔍</span>等待图片</div>
-      <div class="act"><span class="em">⌨</span>输入文字</div>
-      <div class="act"><span class="em">⌨</span>按键</div>
-      <div class="act"><span class="em">⌨</span>组合键</div>
-      <div class="act"><span class="em">⌨</span>按住键</div>
-      <div class="act"><span class="em">⌨</span>松开键</div>
-      <div class="act"><span class="em">🔁</span>循环</div>
-      <div class="act"><span class="em">⏹</span>跳出循环</div>
-      <div class="act"><span class="em">🔀</span>条件分支</div>
-      <div class="act"><span class="em">⤵</span>跳转</div>
-      <div class="act"><span class="em">⇄</span>运行子脚本</div>
-      <div class="act"><span class="em">≡</span>设置变量</div>
-      <div class="act"><span class="em">+</span>变量+</div>
-      <div class="act"><span class="em">−</span>变量-</div>
-      <div class="act"><span class="em">💬</span>提示弹窗</div>
-      <div class="act"><span class="em">❓</span>确认弹窗</div>
-      <div class="act"><span class="em">✎</span>输入弹窗</div>
-      <div class="act"><span class="em">⏰</span>定时停止</div>
+      <div class="act"><span class="em">·</span>点击</div>
+      <div class="act"><span class="em">·</span>双击</div>
+      <div class="act"><span class="em">·</span>右键</div>
+      <div class="act"><span class="em">·</span>移动鼠标</div>
+      <div class="act"><span class="em">·</span>拖拽</div>
+      <div class="act"><span class="em">·</span>滚轮</div>
+      <div class="act"><span class="em">·</span>等待</div>
+      <div class="act"><span class="em">·</span>查找图片</div>
+      <div class="act"><span class="em">·</span>点击图片</div>
+      <div class="act"><span class="em">·</span>等待图片</div>
+      <div class="act"><span class="em">·</span>输入文字</div>
+      <div class="act"><span class="em">·</span>按键</div>
+      <div class="act"><span class="em">·</span>组合键</div>
+      <div class="act"><span class="em">·</span>按住键</div>
+      <div class="act"><span class="em">·</span>松开键</div>
+      <div class="act"><span class="em">·</span>循环</div>
+      <div class="act"><span class="em">·</span>跳出循环</div>
+      <div class="act"><span class="em">·</span>条件分支</div>
+      <div class="act"><span class="em">·</span>跳转</div>
+      <div class="act"><span class="em">·</span>运行子脚本</div>
+      <div class="act"><span class="em">·</span>设置变量</div>
+      <div class="act"><span class="em">·</span>变量+</div>
+      <div class="act"><span class="em">·</span>变量-</div>
+      <div class="act"><span class="em">·</span>提示弹窗</div>
+      <div class="act"><span class="em">·</span>确认弹窗</div>
+      <div class="act"><span class="em">·</span>输入弹窗</div>
+      <div class="act"><span class="em">·</span>定时停止</div>
     </div>
   </div>
 </section>
 
-<!-- 版本 -->
-<section class="block">
+<section class="block" id="versions">
   <div class="wrap">
     <h2><span class="num">03</span>版本与授权</h2>
     <p class="lead">免费试用 6 个核心动作完整工作流; 一次性买断完整版解锁全部功能与定时启动。</p>
@@ -274,83 +294,98 @@
       <div class="ver">
         <h3>免费版</h3>
         <div class="price">¥0</div>
+        <div class="psub">无需注册, 下载即用</div>
         <ul>
           <li>点击 / 移动鼠标 / 循环 / 跳出循环 / 点击图片 / 输入文字</li>
           <li>可视化编辑 + 框选截图 + 脚本喵伙伴</li>
-          <li>定时启动与准星选窗不可用</li>
-          <li>无需注册, 下载即用</li>
+          <li class="off">定时启动与准星选窗不可用</li>
         </ul>
+        <div class="vbtn"><a class="plain" href="#download">下载免费版</a></div>
       </div>
-      <div class="ver">
-        <h3>完整版 (一次性买断)</h3>
+      <div class="ver hot">
+        <h3>完整版 · 一次性买断</h3>
         <div class="price">联系作者</div>
+        <div class="psub">解锁全部能力</div>
         <ul>
           <li>全部 26 种动作类型</li>
           <li>定时启动 + 准星选窗</li>
           <li>机器码绑定, 一台设备永久使用</li>
-          <li>加入 QQ群 / 电话一对一支持</li>
+          <li>QQ群 / 电话一对一支持</li>
         </ul>
+        <div class="vbtn"><a href="#contact">获取授权</a></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 下载 -->
-<section class="block" id="download">
-  <div class="wrap" style="text-align:center">
-    <h2><span class="num">04</span>下载</h2>
-    <p class="lead" style="margin:0 auto 32px">单文件 EXE, 下载即用 — 无需安装 Python 环境, 双击即启动。</p>
-    <a id="downloadBtn2" class="dl-btn" href="#">⬇ 下载 安装版 v1.3.14 (10 MB)</a>
-    <div class="dl-meta" style="margin-top:14px">
-      Windows 10 / 11 · 64 位 · 首次启动约 8 秒解压 · 鼠标移到屏幕左上角可紧急停止
-    </div>
-    <p style="margin-top:32px; color: var(--fg-d); font-size:13px">
-      使用说明: 双击 EXE 启动 → 首页新建脚本 → 选中步骤在右侧填参数 → F5 或 ▶ 按钮运行<br>
-      内置文档: 右上角 ⚙ 设置 → 关于 / 快捷键 / 行为偏好
-    </p>
-  </div>
-</section>
-
-<!-- 联系 -->
-<section class="block" id="contact">
+<section class="block" id="faq">
   <div class="wrap">
+    <h2 class="center"><span class="num">04</span>常见问题</h2>
+    <p class="lead center">关于脚本喵, 你可能想知道的。</p>
+    <div class="faq">
+      <details class="faq-item"><summary>脚本喵需要安装 Python 或任何运行环境吗?</summary><div class="fa">不需要。脚本喵是打包好的单文件 EXE, 内置全部运行环境, 双击即用, 首次启动约 8 秒完成解压。</div></details>
+      <details class="faq-item"><summary>免费版和完整版有什么区别?</summary><div class="fa">免费版可使用 6 个核心动作(点击 / 移动鼠标 / 循环 / 跳出循环 / 点击图片 / 输入文字), 体验完整工作流; 完整版一次性买断, 解锁全部 26 种动作、定时启动与准星选窗, 一台设备永久使用。</div></details>
+      <details class="faq-item"><summary>运行脚本时, 鼠标还能做别的事吗?</summary><div class="fa">可以。脚本喵支持后台运行模式, 锁定目标窗口后脚本在窗口内运行, 不占用你的真实鼠标, 可以同时处理其他工作。</div></details>
+      <details class="faq-item"><summary>脚本运行出错了怎么办?</summary><div class="fa">按 F8 可随时紧急停止, 鼠标甩到屏幕左上角也能急停。日志区会实时显示每个步骤的执行进度, 方便定位问题。</div></details>
+      <details class="faq-item"><summary>激活码可以换电脑用吗?</summary><div class="fa">激活码绑定本机机器码(CPU + 网卡 + 主机名生成)。换电脑需重新生成激活码, 请联系作者获取。</div></details>
+      <details class="faq-item"><summary>有使用教程吗?</summary><div class="fa">有。内置文档位于 设置 → 关于 / 快捷键 / 行为偏好; 也可以在官网查看详细图文教程。</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="download">
+  <div class="wrap">
+    <div class="download-cta">
+      <h2>现在就下载脚本喵</h2>
+      <p class="lead">单文件 EXE, 下载即用 — 无需安装 Python 环境, 双击即启动。</p>
+      <div class="hero-btns" style="justify-content:center">
+        <a class="btn-primary" href="#download">安装版 v1.3.14 (10 MB)</a>
+        <a class="btn-ghost" href="#download">免安装单文件 (76 MB)</a>
+      </div>
+      <div class="hero-meta" style="margin-top:18px">Windows 10 / 11 · 64 位 · 首次启动约 8 秒解压 · 鼠标移到屏幕左上角可紧急停止</div>
+      <p style="margin-top:24px; color: var(--text-d); font-size:13px">
+        使用说明: 双击 EXE 启动 → 首页新建脚本 → 选中步骤在右侧填参数 → F5 或 运行按钮启动<br>
+        内置文档: 右上角 设置 → 关于 / 快捷键 / 行为偏好
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="wrap center">
     <h2><span class="num">05</span>联系方式</h2>
-    <p class="lead">购买授权 / 使用问题 / 定制功能, 随时联系作者。</p>
+    <p class="lead center">购买授权 / 使用问题 / 定制功能, 随时联系作者。</p>
     <div class="contact">
-      <div class="cbox">
-        <div class="lbl">QQ群</div>
-        <div class="val">1108351043</div>
-      </div>
-      <div class="cbox">
-        <div class="lbl">电话</div>
-        <div class="val">13870170818</div>
-      </div>
-      <div class="cbox">
-        <div class="lbl">授权获取</div>
-        <div class="val" style="font-size:14px; line-height:1.5">
-          启动软件 → ⚙ 设置 → 授权与激活 →<br>
-          复制本机机器码发给作者 → 作者返回激活码 → 输入激活
-        </div>
-      </div>
+      <div class="cbox"><div class="lbl">QQ群</div><div class="val">1108351043</div></div>
+      <div class="cbox"><div class="lbl">电话</div><div class="val">13870170818</div></div>
+      <div class="cbox"><div class="lbl">授权获取</div><div class="val" style="font-size:14px">设置 → 授权与激活 → 复制机器码发作者 → 输入激活码</div></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    © 脚本喵 · 让自动化更简单 · v1.3.14 · <a href="#download">下载</a>
-  </div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.14 · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="changelog.html">更新日志</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
-// 下载按钮: 部署完成后由部署脚本注入 DOWNLOAD_URL
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', function () { navLinks.classList.toggle('open'); });
+navLinks.addEventListener('click', function (e) { if (e.target.tagName === 'A') navLinks.classList.remove('open'); });
+const path = location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.navlinks a').forEach(function (a) { if (a.getAttribute('href') === path) a.classList.add('cur'); });
 const DEFAULT_DL = 'https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.link/' + encodeURIComponent('脚本喵安装器.exe');
+const EXE_URL = 'https://b65bb4931b71411c97d3b7b2825549ac.app.workbuddy.link/' + encodeURIComponent('脚本喵.exe');
 const params = new URLSearchParams(location.search);
 const url = params.get('dl') || DEFAULT_DL;
-if (url) {
-  document.getElementById('downloadBtn').href = url;
-  document.getElementById('downloadBtn2').href = 'https://b65bb4931b71411c97d3b7b2825549ac.app.workbuddy.link/' + encodeURIComponent('脚本喵.exe');
-}
+document.querySelectorAll('.btn-primary').forEach(function (btn) {
+  btn.addEventListener('click', function (e) { e.preventDefault(); window.open(url, '_blank'); });
+});
+document.querySelectorAll('.btn-ghost').forEach(function (btn) {
+  if (btn.textContent.indexOf('单文件') !== -1) {
+    btn.addEventListener('click', function (e) { e.preventDefault(); window.open(EXE_URL, '_blank'); });
+  }
+});
 </script>
 
 </body>
