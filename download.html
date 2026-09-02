@@ -45,7 +45,7 @@
       "name": "下载的脚本喵被杀毒软件拦截怎么办？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "脚本喵是自动化工具，部分安全软件会误报。请将脚本喵添加至信任区后重新下载，或使用安装向导版（有数字签名流程更顺畅）。我们建议从官网高速源下载，避免第三方捆绑修改版。"
+        "text": "脚本喵是自动化工具，部分安全软件会误报。请将脚本喵添加至信任区后重新下载，或使用安装向导版。我们建议从官网高速源下载，避免第三方捆绑修改版。"
       }
     },
     {
@@ -63,52 +63,75 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #181818; --panel: #232323; --ctrl: #2e2e2e; --border: #333;
-    --fg: #f0f0f0; --fg-d: #b8b8b8; --accent: #00d95f; --accent-d: #00a847;
+    --bg: #ffffff; --bg-soft: #f7f8fa; --panel: #ffffff;
+    --border: #e5e7eb; --border-d: #d0d7de;
+    --text: #1f2328; --text-d: #656d76; --text-d2: #8c959f;
+    --accent: #2ea9dd; --accent-d: #1e88e5; --accent-soft: rgba(46,169,221,.08);
+    --warn: #b8860b;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md: 0 6px 24px rgba(0,0,0,.08);
+    --shadow-lg: 0 18px 48px rgba(46,169,221,.18);
   }
-  html, body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
-  a { color: var(--accent); text-decoration: none; }
+  html, body { background: var(--bg); color: var(--text); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  a { color: var(--accent-d); text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-  header { padding: 18px 0; border-bottom: 1px solid var(--border); background: rgba(0,0,0,.2); position: sticky; top: 0; backdrop-filter: blur(8px); z-index: 10; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 16px 0; background: rgba(255,255,255,.85); border-bottom: 1px solid var(--border); position: sticky; top: 0; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100; }
   .nav { display: flex; align-items: center; justify-content: space-between; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; }
-  .brand img { width: 32px; height: 32px; }
-  .navlinks a { color: var(--fg-d); margin-left: 24px; font-size: 14px; }
-  .navlinks a:hover { color: var(--accent); text-decoration: none; }
-  .navlinks a.cur { color: var(--accent); }
-  .page { padding: 60px 0 40px; }
-  .page h1 { font-size: 36px; font-weight: 600; margin-bottom: 12px; }
-  .page .lead { color: var(--fg-d); font-size: 16px; max-width: 720px; margin-bottom: 40px; }
-  section.block { padding: 40px 0; border-top: 1px solid var(--border); }
-  section h2 { font-size: 24px; margin-bottom: 16px; font-weight: 600; }
-  section h2 .num { color: var(--accent); margin-right: 8px; }
-  .dl-btn {
-    display: inline-block; padding: 14px 36px; font-size: 16px; font-weight: 600;
-    background: var(--accent); color: #000; border-radius: 10px; margin: 6px 8px 6px 0;
-    transition: all .15s ease;
-  }
-  .dl-btn:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; }
-  .dl-btn.ghost { background: var(--ctrl); color: var(--fg); border: 1px solid var(--border); }
-  .dl-btn.ghost:hover { background: #3a3a3a; }
-  .dl-meta { margin-top: 10px; color: var(--fg-d); font-size: 13px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--text); }
+  .brand img { width: 30px; height: 30px; border-radius: 7px; }
+  .navlinks { display: flex; align-items: center; gap: 4px; }
+  .navlinks a { color: var(--text-d); margin-left: 20px; font-size: 14px; padding: 4px 0; }
+  .navlinks a:hover { color: var(--accent-d); text-decoration: none; }
+  .navlinks a.cur { color: var(--accent-d); font-weight: 600; }
+  .nav-dl { margin-left: 22px; background: var(--accent); color: #fff !important; font-weight: 600; padding: 8px 18px; border-radius: 8px; font-size: 13px !important; box-shadow: 0 2px 8px rgba(46,169,221,.25); }
+  .nav-dl:hover { background: var(--accent-d); text-decoration: none; }
+  .hamburger { display: none; background: none; border: 1px solid var(--border); color: var(--text); font-size: 18px; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+
+  .page { padding: 56px 0 24px; }
+  .page h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; color: var(--text); letter-spacing: .3px; }
+  .page .lead { color: var(--text-d); font-size: 15.5px; max-width: 720px; margin-bottom: 36px; }
+  section.block { padding: 44px 0; border-top: 1px solid var(--border); }
+  section h2 { font-size: 26px; margin-bottom: 16px; font-weight: 800; color: var(--text); }
+  section h2 .num { color: var(--accent-d); margin-right: 10px; }
+
+  .btn-primary { display: inline-block; padding: 13px 30px; font-size: 15px; font-weight: 700; background: var(--accent); color: #fff; border-radius: 10px; box-shadow: 0 4px 14px rgba(46,169,221,.25); transition: all .18s; }
+  .btn-primary:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; box-shadow: 0 8px 22px rgba(46,169,221,.3); }
+  .btn-ghost { display: inline-block; padding: 13px 28px; font-size: 15px; font-weight: 600; background: transparent; color: var(--text); border: 1px solid var(--border-d); border-radius: 10px; transition: all .18s; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-d); text-decoration: none; }
+
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
-  .card h3 { font-size: 16px; margin-bottom: 8px; }
-  .card p, .card li { color: var(--fg-d); font-size: 13px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: all .2s; }
+  .card:hover { border-color: rgba(46,169,221,.45); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+  .card p, .card li { color: var(--text-d); font-size: 13.5px; }
   .card ul { list-style: none; padding: 0; }
-  .card li { padding: 3px 0; }
-  .card li::before { content: "✓ "; color: var(--accent); }
+  .card li { padding: 4px 0; }
+  .card li::before { content: "✓ "; color: var(--accent-d); font-weight: 700; }
+  .dl-meta { margin-top: 14px; color: var(--text-d2); font-size: 12.5px; }
+
+  .note { background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 22px 0; color: var(--text-d); font-size: 14px; }
+
   .faq { max-width: 800px; }
-  .faq details { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; }
-  .faq summary { cursor: pointer; font-weight: 600; font-size: 15px; }
-  .faq details p { color: var(--fg-d); font-size: 14px; margin-top: 10px; }
-  .note { background: var(--ctrl); border-left: 3px solid var(--accent); border-radius: 6px; padding: 14px 18px; margin: 20px 0; color: var(--fg-d); font-size: 14px; }
-  footer { padding: 30px 0; text-align: center; color: var(--fg-d); font-size: 13px; border-top: 1px solid var(--border); margin-top: 30px; }
-  @media (max-width: 640px) {
+  details.faq-item { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 11px; margin-bottom: 10px; }
+  details.faq-item summary { cursor: pointer; padding: 16px 20px; font-size: 14.5px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--accent-d); font-size: 20px; font-weight: 700; }
+  details.faq-item[open] summary::after { content: "-"; }
+  details.faq-item .fa { padding: 0 20px 16px; color: var(--text-d); font-size: 13.5px; }
+
+  footer { padding: 34px 0; text-align: center; color: var(--text-d2); font-size: 13px; border-top: 1px solid var(--border); margin-top: 20px; }
+  footer a { color: var(--text-d); }
+
+  @media (max-width: 800px) {
+    .hamburger { display: block; }
+    .navlinks { display: none; position: absolute; top: 60px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); flex-direction: column; align-items: stretch; padding: 10px 24px 16px; }
+    .navlinks.open { display: flex; }
+    .navlinks a { margin: 0; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .navlinks .nav-dl { margin: 12px 0 0; text-align: center; }
     .page h1 { font-size: 28px; }
-    .navlinks { display: none; }
-    .dl-btn { padding: 12px 24px; font-size: 14px; }
+    section h2 { font-size: 22px; }
   }
 </style>
 </head>
@@ -116,17 +139,16 @@
 
 <header>
   <div class="wrap nav">
-    <div class="brand">
-      <img src="scriptmeow.png" alt="脚本喵">
-      <a href="index.html" style="color:var(--fg)"><span>脚本喵</span></a>
-    </div>
-    <div class="navlinks">
+    <a class="brand" href="index.html"><img src="scriptmeow.png" alt="脚本喵"><span>脚本喵</span></a>
+    <div class="navlinks" id="navLinks">
       <a href="index.html">首页</a>
-      <a href="download.html" class="cur">下载</a>
+      <a href="download.html">下载</a>
       <a href="tutorial.html">教程</a>
       <a href="changelog.html">更新日志</a>
       <a href="activate.html">激活码</a>
+      <a class="nav-dl" href="download.html">立即下载</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="菜单">=</button>
   </div>
 </header>
 
@@ -142,7 +164,7 @@
         <li>自动创建桌面快捷方式</li>
         <li>可在 Windows「程序和功能」中卸载</li>
       </ul>
-      <a id="dlInstaller" class="dl-btn" href="#">⬇ 下载安装向导版</a>
+      <a id="dlInstaller" class="btn-primary" href="#">⬇ 下载安装向导版</a>
       <div class="dl-meta">v1.3.14 · 10 MB · Windows 10/11 64 位</div>
     </div>
     <div class="card">
@@ -152,14 +174,14 @@
         <li>适合 U 盘随身携带、绿色使用</li>
         <li>首次启动约 8 秒解压</li>
       </ul>
-      <a id="dlPortable" class="dl-btn" href="#">⬇ 下载单文件版</a>
+      <a id="dlPortable" class="btn-primary" href="#">⬇ 下载单文件版</a>
       <div class="dl-meta">v1.3.14 · 76 MB · 免安装绿色版</div>
     </div>
   </div>
 
   <div class="note">💡 国内用户优先走高速下载源，速度更快；若下载失败，可点击下方「GitHub 备用下载」。</div>
-  <a id="dlGH" class="dl-btn ghost" href="#">🐙 GitHub 备用下载（单文件版）</a>
-  <a class="dl-btn ghost" href="index.html">🏠 返回官网首页</a>
+  <a id="dlGH" class="btn-ghost" href="#">🐙 GitHub 备用下载（单文件版）</a>
+  <a class="btn-ghost" href="index.html">🏠 返回官网首页</a>
 </div>
 
 <section class="block">
@@ -177,37 +199,41 @@
   <div class="wrap">
     <h2><span class="num">02</span>下载常见问题</h2>
     <div class="faq">
-      <details open>
+      <details class="faq-item" open>
         <summary>下载安装版和单文件版有什么区别？</summary>
-        <p>安装版带安装向导，自动创建桌面快捷方式并注册卸载入口，适合正式使用；单文件版免安装，绿色便携，适合 U 盘携带或临时使用。两者功能完全一致。</p>
+        <div class="fa">安装版带安装向导，自动创建桌面快捷方式并注册卸载入口，适合正式使用；单文件版免安装，绿色便携，适合 U 盘携带或临时使用。两者功能完全一致。</div>
       </details>
-      <details>
+      <details class="faq-item">
         <summary>下载速度慢怎么办？</summary>
-        <p>官网默认使用国内高速下载源（CloudStudio 国内节点）。若仍较慢，可点击「GitHub 备用下载」，或稍后再试。</p>
+        <div class="fa">官网默认使用国内高速下载源。若仍较慢，可点击「GitHub 备用下载」，或稍后再试。</div>
       </details>
-      <details>
+      <details class="faq-item">
         <summary>需要安装 Python 环境吗？</summary>
-        <p>不需要。脚本喵已内置全部运行环境，双击 EXE 即可启动，无需任何额外安装。</p>
+        <div class="fa">不需要。脚本喵已内置全部运行环境，双击 EXE 即可启动，无需任何额外安装。</div>
       </details>
-      <details>
+      <details class="faq-item">
         <summary>安全软件提示风险怎么办？</summary>
-        <p>自动化工具会被部分安全软件误报。请将脚本喵添加至信任区后重新下载，建议从官网高速源下载，避免第三方捆绑修改版。</p>
+        <div class="fa">自动化工具会被部分安全软件误报。请将脚本喵添加至信任区后重新下载，建议从官网高速源下载，避免第三方捆绑修改版。</div>
       </details>
-      <details>
+      <details class="faq-item">
         <summary>免费版能用哪些功能？</summary>
-        <p>免费版可体验点击、移动鼠标、循环、跳出循环、点击图片、输入文字 6 个核心动作的完整工作流；完整版一次性买断，解锁全部 26 种动作与定时启动、准星选窗等高级功能。</p>
+        <div class="fa">免费版可体验点击、移动鼠标、循环、跳出循环、点击图片、输入文字 6 个核心动作的完整工作流；完整版一次性买断，解锁全部 26 种动作与定时启动、准星选窗等高级功能。</div>
       </details>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    © 脚本喵 · 让自动化更简单 · v1.3.14 · <a href="index.html">首页</a> · <a href="tutorial.html">教程</a> · <a href="changelog.html">更新日志</a>
-  </div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.14 · <a href="index.html">首页</a> · <a href="tutorial.html">教程</a> · <a href="changelog.html">更新日志</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', function () { navLinks.classList.toggle('open'); });
+navLinks.addEventListener('click', function (e) { if (e.target.tagName === 'A') navLinks.classList.remove('open'); });
+const path = location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.navlinks a').forEach(function (a) { if (a.getAttribute('href') === path) a.classList.add('cur'); });
 const CP = 'https://b65bb4931b71411c97d3b7b2825549ac.app.workbuddy.link/' + encodeURIComponent('脚本喵.exe');
 const IN = 'https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.link/' + encodeURIComponent('脚本喵安装器.exe');
 document.getElementById('dlInstaller').href = IN;

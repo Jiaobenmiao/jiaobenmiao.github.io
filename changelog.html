@@ -15,41 +15,64 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #181818; --panel: #232323; --ctrl: #2e2e2e; --border: #333;
-    --fg: #f0f0f0; --fg-d: #b8b8b8; --accent: #00d95f; --accent-d: #00a847;
-    --warn: #ffd479;
+    --bg: #ffffff; --bg-soft: #f7f8fa; --panel: #ffffff;
+    --border: #e5e7eb; --border-d: #d0d7de;
+    --text: #1f2328; --text-d: #656d76; --text-d2: #8c959f;
+    --accent: #2ea9dd; --accent-d: #1e88e5; --accent-soft: rgba(46,169,221,.08);
+    --warn: #b8860b;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md: 0 6px 24px rgba(0,0,0,.08);
+    --shadow-lg: 0 18px 48px rgba(46,169,221,.18);
   }
-  html, body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
-  a { color: var(--accent); text-decoration: none; }
+  html, body { background: var(--bg); color: var(--text); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  a { color: var(--accent-d); text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-  header { padding: 18px 0; border-bottom: 1px solid var(--border); background: rgba(0,0,0,.2); position: sticky; top: 0; backdrop-filter: blur(8px); z-index: 10; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 16px 0; background: rgba(255,255,255,.85); border-bottom: 1px solid var(--border); position: sticky; top: 0; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100; }
   .nav { display: flex; align-items: center; justify-content: space-between; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; }
-  .brand img { width: 32px; height: 32px; }
-  .navlinks a { color: var(--fg-d); margin-left: 24px; font-size: 14px; }
-  .navlinks a:hover { color: var(--accent); text-decoration: none; }
-  .navlinks a.cur { color: var(--accent); }
-  .page { padding: 60px 0 40px; }
-  .page h1 { font-size: 36px; font-weight: 600; margin-bottom: 12px; }
-  .page .lead { color: var(--fg-d); font-size: 16px; max-width: 720px; margin-bottom: 40px; }
-  .ver { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--text); }
+  .brand img { width: 30px; height: 30px; border-radius: 7px; }
+  .navlinks { display: flex; align-items: center; gap: 4px; }
+  .navlinks a { color: var(--text-d); margin-left: 20px; font-size: 14px; padding: 4px 0; }
+  .navlinks a:hover { color: var(--accent-d); text-decoration: none; }
+  .navlinks a.cur { color: var(--accent-d); font-weight: 600; }
+  .nav-dl { margin-left: 22px; background: var(--accent); color: #fff !important; font-weight: 600; padding: 8px 18px; border-radius: 8px; font-size: 13px !important; box-shadow: 0 2px 8px rgba(46,169,221,.25); }
+  .nav-dl:hover { background: var(--accent-d); text-decoration: none; }
+  .hamburger { display: none; background: none; border: 1px solid var(--border); color: var(--text); font-size: 18px; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+
+  .page { padding: 56px 0 24px; }
+  .page h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; color: var(--text); letter-spacing: .3px; }
+  .page .lead { color: var(--text-d); font-size: 15.5px; max-width: 720px; margin-bottom: 30px; }
+  .page .lead b { color: var(--accent-d); }
+
+  .btn-primary { display: inline-block; padding: 12px 28px; font-size: 15px; font-weight: 700; background: var(--accent); color: #fff; border-radius: 10px; box-shadow: 0 4px 14px rgba(46,169,221,.25); transition: all .18s; }
+  .btn-primary:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; box-shadow: 0 8px 22px rgba(46,169,221,.3); }
+
+  section.block { padding: 20px 0 60px; }
+  .ver { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 22px 26px; margin-bottom: 14px; transition: all .2s; }
+  .ver:hover { border-color: rgba(46,169,221,.4); box-shadow: var(--shadow-md); }
   .ver .vhead { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .ver h2 { font-size: 20px; color: var(--accent); }
-  .ver .date { color: var(--fg-d); font-size: 13px; }
-  .ver .badge { background: var(--ctrl); border: 1px solid var(--border); border-radius: 20px; padding: 2px 10px; font-size: 12px; color: var(--fg-d); }
+  .ver h2 { font-size: 20px; font-weight: 800; color: var(--accent-d); }
+  .ver .date { color: var(--text-d2); font-size: 13px; }
+  .ver .badge { background: var(--accent-soft); color: var(--accent-d); border-radius: 20px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
   .ver ul { list-style: none; padding: 10px 0 0; }
-  .ver li { color: var(--fg-d); font-size: 14px; padding: 3px 0; }
-  .ver li::before { content: "✓ "; color: var(--accent); }
+  .ver li { color: var(--text-d); font-size: 14px; padding: 3px 0; }
+  .ver li::before { content: "✓ "; color: var(--accent-d); font-weight: 700; }
   .ver li.fix::before { content: "🔧 "; }
   .ver li.new::before { content: "✨ "; }
   .ver li.warn::before { content: "⚠ "; color: var(--warn); }
-  .dl-btn { display: inline-block; padding: 12px 28px; font-size: 15px; font-weight: 600; background: var(--accent); color: #000; border-radius: 10px; margin-top: 8px; }
-  .dl-btn:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; }
-  footer { padding: 30px 0; text-align: center; color: var(--fg-d); font-size: 13px; border-top: 1px solid var(--border); margin-top: 30px; }
-  @media (max-width: 640px) {
+
+  footer { padding: 34px 0; text-align: center; color: var(--text-d2); font-size: 13px; border-top: 1px solid var(--border); margin-top: 20px; }
+  footer a { color: var(--text-d); }
+
+  @media (max-width: 800px) {
+    .hamburger { display: block; }
+    .navlinks { display: none; position: absolute; top: 60px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); flex-direction: column; align-items: stretch; padding: 10px 24px 16px; }
+    .navlinks.open { display: flex; }
+    .navlinks a { margin: 0; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .navlinks .nav-dl { margin: 12px 0 0; text-align: center; }
     .page h1 { font-size: 28px; }
-    .navlinks { display: none; }
   }
 </style>
 </head>
@@ -57,27 +80,26 @@
 
 <header>
   <div class="wrap nav">
-    <div class="brand">
-      <img src="scriptmeow.png" alt="脚本喵">
-      <a href="index.html" style="color:var(--fg)"><span>脚本喵</span></a>
-    </div>
-    <div class="navlinks">
+    <a class="brand" href="index.html"><img src="scriptmeow.png" alt="脚本喵"><span>脚本喵</span></a>
+    <div class="navlinks" id="navLinks">
       <a href="index.html">首页</a>
       <a href="download.html">下载</a>
       <a href="tutorial.html">教程</a>
-      <a href="changelog.html" class="cur">更新日志</a>
+      <a href="changelog.html">更新日志</a>
       <a href="activate.html">激活码</a>
+      <a class="nav-dl" href="download.html">立即下载</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="菜单">=</button>
   </div>
 </header>
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b style="color:var(--accent)">v1.3.14</b></p>
-  <a class="dl-btn" href="download.html">⬇ 下载最新版</a>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.14</b></p>
+  <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
-<section class="block" style="border-top:1px solid var(--border); padding: 20px 0 60px">
+<section class="block">
   <div class="wrap">
 
     <div class="ver">
@@ -170,10 +192,17 @@
 </section>
 
 <footer>
-  <div class="wrap">
-    © 脚本喵 · 让自动化更简单 · v1.3.14 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a>
-  </div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.14 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', function () { navLinks.classList.toggle('open'); });
+navLinks.addEventListener('click', function (e) { if (e.target.tagName === 'A') navLinks.classList.remove('open'); });
+const path = location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.navlinks a').forEach(function (a) { if (a.getAttribute('href') === path) a.classList.add('cur'); });
+</script>
 
 </body>
 </html>
