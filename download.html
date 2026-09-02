@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>脚本喵下载 - Windows 10/11 免费下载 安装版/单文件版 | 脚本喵官方</title>
+<meta name="description" content="脚本喵官方下载页。Windows 10/11 64 位电脑自动化工具免费下载，提供安装向导版与单文件免安装版两种选择，国内高速下载源，双击即用，无需 Python 环境。">
+<meta name="keywords" content="脚本喵下载,脚本喵电脑版,脚本喵免费下载,脚本喵安装,自动化工具下载,按键精灵替代,鼠标键盘自动化软件">
+<meta property="og:title" content="脚本喵下载 - Windows 10/11 免费下载">
+<meta property="og:description" content="Windows 自动化键鼠脚本可视化工作台免费下载，安装版/单文件版任选，国内高速源。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jiaobenmiao.github.io/download.html">
+<meta property="og:image" content="https://jiaobenmiao.github.io/scriptmeow.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "脚本喵怎么下载？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "在脚本喵官网点击「下载安装版」按钮即可下载安装向导版（约 10 MB，自动下载内含的 76 MB 主程序）；或点击「单文件版」直接下载免安装版本，双击即用。国内用户推荐使用高速下载源，速度更快。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "脚本喵需要安装 Python 环境吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不需要。脚本喵是单文件 EXE 程序，已内置全部运行环境，下载后双击即可启动，无需安装 Python、Java 等任何依赖。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "脚本喵支持哪些 Windows 系统？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "脚本喵支持 Windows 10 / Windows 11 的 64 位系统。首次启动约需 8 秒解压，之后秒开。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "下载的脚本喵被杀毒软件拦截怎么办？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "脚本喵是自动化工具，部分安全软件会误报。请将脚本喵添加至信任区后重新下载，或使用安装向导版（有数字签名流程更顺畅）。我们建议从官网高速源下载，避免第三方捆绑修改版。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "脚本喵免费版和完整版有什么区别？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "免费版可体验点击、移动鼠标、循环、点击图片、输入文字等 6 个核心动作的完整工作流；完整版为一次性买断，解锁全部 26 种动作、定时启动、准星选窗等功能，机器码绑定一台设备永久使用。"
+      }
+    }
+  ]
+}
+</script>
+<link rel="icon" href="scriptmeow.png" type="image/png">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #181818; --panel: #232323; --ctrl: #2e2e2e; --border: #333;
+    --fg: #f0f0f0; --fg-d: #b8b8b8; --accent: #00d95f; --accent-d: #00a847;
+  }
+  html, body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 18px 0; border-bottom: 1px solid var(--border); background: rgba(0,0,0,.2); position: sticky; top: 0; backdrop-filter: blur(8px); z-index: 10; }
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; }
+  .brand img { width: 32px; height: 32px; }
+  .navlinks a { color: var(--fg-d); margin-left: 24px; font-size: 14px; }
+  .navlinks a:hover { color: var(--accent); text-decoration: none; }
+  .navlinks a.cur { color: var(--accent); }
+  .page { padding: 60px 0 40px; }
+  .page h1 { font-size: 36px; font-weight: 600; margin-bottom: 12px; }
+  .page .lead { color: var(--fg-d); font-size: 16px; max-width: 720px; margin-bottom: 40px; }
+  section.block { padding: 40px 0; border-top: 1px solid var(--border); }
+  section h2 { font-size: 24px; margin-bottom: 16px; font-weight: 600; }
+  section h2 .num { color: var(--accent); margin-right: 8px; }
+  .dl-btn {
+    display: inline-block; padding: 14px 36px; font-size: 16px; font-weight: 600;
+    background: var(--accent); color: #000; border-radius: 10px; margin: 6px 8px 6px 0;
+    transition: all .15s ease;
+  }
+  .dl-btn:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; }
+  .dl-btn.ghost { background: var(--ctrl); color: var(--fg); border: 1px solid var(--border); }
+  .dl-btn.ghost:hover { background: #3a3a3a; }
+  .dl-meta { margin-top: 10px; color: var(--fg-d); font-size: 13px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .card h3 { font-size: 16px; margin-bottom: 8px; }
+  .card p, .card li { color: var(--fg-d); font-size: 13px; }
+  .card ul { list-style: none; padding: 0; }
+  .card li { padding: 3px 0; }
+  .card li::before { content: "✓ "; color: var(--accent); }
+  .faq { max-width: 800px; }
+  .faq details { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; }
+  .faq summary { cursor: pointer; font-weight: 600; font-size: 15px; }
+  .faq details p { color: var(--fg-d); font-size: 14px; margin-top: 10px; }
+  .note { background: var(--ctrl); border-left: 3px solid var(--accent); border-radius: 6px; padding: 14px 18px; margin: 20px 0; color: var(--fg-d); font-size: 14px; }
+  footer { padding: 30px 0; text-align: center; color: var(--fg-d); font-size: 13px; border-top: 1px solid var(--border); margin-top: 30px; }
+  @media (max-width: 640px) {
+    .page h1 { font-size: 28px; }
+    .navlinks { display: none; }
+    .dl-btn { padding: 12px 24px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="scriptmeow.png" alt="脚本喵">
+      <a href="index.html" style="color:var(--fg)"><span>脚本喵</span></a>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">首页</a>
+      <a href="download.html" class="cur">下载</a>
+      <a href="tutorial.html">教程</a>
+      <a href="changelog.html">更新日志</a>
+      <a href="activate.html">激活码</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap page">
+  <h1>脚本喵下载</h1>
+  <p class="lead">脚本喵是 Windows 桌面自动化工具，把鼠标点击、键盘输入、图像识别组合成脚本，重复性工作一键自动完成。以下两种方式任选其一，都是 v1.3.14 最新版。</p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>📦 安装向导版（推荐）</h3>
+      <ul>
+        <li>约 10 MB，带安装向导，自动下载主程序</li>
+        <li>自动创建桌面快捷方式</li>
+        <li>可在 Windows「程序和功能」中卸载</li>
+      </ul>
+      <a id="dlInstaller" class="dl-btn" href="#">⬇ 下载安装向导版</a>
+      <div class="dl-meta">v1.3.14 · 10 MB · Windows 10/11 64 位</div>
+    </div>
+    <div class="card">
+      <h3>⚡ 单文件免安装版</h3>
+      <ul>
+        <li>约 76 MB，双击即用，无需安装</li>
+        <li>适合 U 盘随身携带、绿色使用</li>
+        <li>首次启动约 8 秒解压</li>
+      </ul>
+      <a id="dlPortable" class="dl-btn" href="#">⬇ 下载单文件版</a>
+      <div class="dl-meta">v1.3.14 · 76 MB · 免安装绿色版</div>
+    </div>
+  </div>
+
+  <div class="note">💡 国内用户优先走高速下载源，速度更快；若下载失败，可点击下方「GitHub 备用下载」。</div>
+  <a id="dlGH" class="dl-btn ghost" href="#">🐙 GitHub 备用下载（单文件版）</a>
+  <a class="dl-btn ghost" href="index.html">🏠 返回官网首页</a>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">01</span>系统要求</h2>
+    <div class="grid">
+      <div class="card"><h3>系统</h3><p>Windows 10 / Windows 11（64 位）</p></div>
+      <div class="card"><h3>依赖</h3><p>无需 Python / Java 等任何运行环境，单文件即开即用</p></div>
+      <div class="card"><h3>硬件</h3><p>2GB 内存以上，任何主流 CPU 均可流畅运行</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">02</span>下载常见问题</h2>
+    <div class="faq">
+      <details open>
+        <summary>下载安装版和单文件版有什么区别？</summary>
+        <p>安装版带安装向导，自动创建桌面快捷方式并注册卸载入口，适合正式使用；单文件版免安装，绿色便携，适合 U 盘携带或临时使用。两者功能完全一致。</p>
+      </details>
+      <details>
+        <summary>下载速度慢怎么办？</summary>
+        <p>官网默认使用国内高速下载源（CloudStudio 国内节点）。若仍较慢，可点击「GitHub 备用下载」，或稍后再试。</p>
+      </details>
+      <details>
+        <summary>需要安装 Python 环境吗？</summary>
+        <p>不需要。脚本喵已内置全部运行环境，双击 EXE 即可启动，无需任何额外安装。</p>
+      </details>
+      <details>
+        <summary>安全软件提示风险怎么办？</summary>
+        <p>自动化工具会被部分安全软件误报。请将脚本喵添加至信任区后重新下载，建议从官网高速源下载，避免第三方捆绑修改版。</p>
+      </details>
+      <details>
+        <summary>免费版能用哪些功能？</summary>
+        <p>免费版可体验点击、移动鼠标、循环、跳出循环、点击图片、输入文字 6 个核心动作的完整工作流；完整版一次性买断，解锁全部 26 种动作与定时启动、准星选窗等高级功能。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 脚本喵 · 让自动化更简单 · v1.3.14 · <a href="index.html">首页</a> · <a href="tutorial.html">教程</a> · <a href="changelog.html">更新日志</a>
+  </div>
+</footer>
+
+<script>
+const CP = 'https://b65bb4931b71411c97d3b7b2825549ac.app.workbuddy.link/' + encodeURIComponent('脚本喵.exe');
+const IN = 'https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.link/' + encodeURIComponent('脚本喵安装器.exe');
+document.getElementById('dlInstaller').href = IN;
+document.getElementById('dlPortable').href = CP;
+document.getElementById('dlGH').href = 'https://jiaobenmiao.github.io/' + encodeURIComponent('脚本喵.exe');
+</script>
+
+</body>
+</html>

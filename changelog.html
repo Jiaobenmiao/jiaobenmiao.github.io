@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>脚本喵更新日志 - 版本历史与更新公告 | 脚本喵 changelog</title>
+<meta name="description" content="脚本喵自动化工具版本更新日志，记录每一个版本的改进、新增功能与问题修复，包括监听动作、图像识别、定时脚本、后台运行等功能的迭代历史。">
+<meta name="keywords" content="脚本喵更新日志,脚本喵版本,脚本喵更新,自动化工具更新,脚本喵 changelog,脚本喵新版本">
+<meta property="og:title" content="脚本喵更新日志 - 版本历史">
+<meta property="og:description" content="脚本喵版本更新日志，记录每个版本的改进与修复。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jiaobenmiao.github.io/changelog.html">
+<meta property="og:image" content="https://jiaobenmiao.github.io/scriptmeow.png">
+<link rel="icon" href="scriptmeow.png" type="image/png">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #181818; --panel: #232323; --ctrl: #2e2e2e; --border: #333;
+    --fg: #f0f0f0; --fg-d: #b8b8b8; --accent: #00d95f; --accent-d: #00a847;
+    --warn: #ffd479;
+  }
+  html, body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 18px 0; border-bottom: 1px solid var(--border); background: rgba(0,0,0,.2); position: sticky; top: 0; backdrop-filter: blur(8px); z-index: 10; }
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; }
+  .brand img { width: 32px; height: 32px; }
+  .navlinks a { color: var(--fg-d); margin-left: 24px; font-size: 14px; }
+  .navlinks a:hover { color: var(--accent); text-decoration: none; }
+  .navlinks a.cur { color: var(--accent); }
+  .page { padding: 60px 0 40px; }
+  .page h1 { font-size: 36px; font-weight: 600; margin-bottom: 12px; }
+  .page .lead { color: var(--fg-d); font-size: 16px; max-width: 720px; margin-bottom: 40px; }
+  .ver { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 14px; }
+  .ver .vhead { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .ver h2 { font-size: 20px; color: var(--accent); }
+  .ver .date { color: var(--fg-d); font-size: 13px; }
+  .ver .badge { background: var(--ctrl); border: 1px solid var(--border); border-radius: 20px; padding: 2px 10px; font-size: 12px; color: var(--fg-d); }
+  .ver ul { list-style: none; padding: 10px 0 0; }
+  .ver li { color: var(--fg-d); font-size: 14px; padding: 3px 0; }
+  .ver li::before { content: "✓ "; color: var(--accent); }
+  .ver li.fix::before { content: "🔧 "; }
+  .ver li.new::before { content: "✨ "; }
+  .ver li.warn::before { content: "⚠ "; color: var(--warn); }
+  .dl-btn { display: inline-block; padding: 12px 28px; font-size: 15px; font-weight: 600; background: var(--accent); color: #000; border-radius: 10px; margin-top: 8px; }
+  .dl-btn:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; }
+  footer { padding: 30px 0; text-align: center; color: var(--fg-d); font-size: 13px; border-top: 1px solid var(--border); margin-top: 30px; }
+  @media (max-width: 640px) {
+    .page h1 { font-size: 28px; }
+    .navlinks { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="scriptmeow.png" alt="脚本喵">
+      <a href="index.html" style="color:var(--fg)"><span>脚本喵</span></a>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">首页</a>
+      <a href="download.html">下载</a>
+      <a href="tutorial.html">教程</a>
+      <a href="changelog.html" class="cur">更新日志</a>
+      <a href="activate.html">激活码</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap page">
+  <h1>脚本喵更新日志</h1>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b style="color:var(--accent)">v1.3.14</b></p>
+  <a class="dl-btn" href="download.html">⬇ 下载最新版</a>
+</div>
+
+<section class="block" style="border-top:1px solid var(--border); padding: 20px 0 60px">
+  <div class="wrap">
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.3.14</h2>
+        <span class="date">2026-09-01</span>
+        <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="fix">修复：监听动作弹窗空白问题（子步骤编辑窗口布局重构，4 个分支 Tab 全部正常显示）</li>
+        <li class="fix">修复：弹窗标题版本号显示错误问题</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.3.13</h2>
+        <span class="date">2026-08-31</span>
+      </div>
+      <ul>
+        <li class="new">监听动作升级为 4 分支：条件满足时 / 条件不满足时 / 步骤成功后 / 步骤失败后，每个分支可独立配置子步骤</li>
+        <li class="fix">修复：监听弹窗高度不足、按钮被挤出屏幕的问题</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.3.12</h2>
+        <span class="date">2026-08-30</span>
+      </div>
+      <ul>
+        <li class="new">运行条件区域新增「↺ 恢复默认」按钮</li>
+        <li class="new">截取区域右侧新增图片实时预览缩略图</li>
+        <li class="fix">修复：运行条件不满足时脚本卡住的问题（现在直接跳过该步骤继续执行下一步）</li>
+        <li class="new">成功 / 失败动作合并进监听动作弹窗统一管理</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.3.x（8 月中旬）</h2>
+        <span class="date">2026-08</span>
+      </div>
+      <ul>
+        <li class="new">运行条件支持「出现文字」识别：基于系统 OCR 引擎识别指定区域文字</li>
+        <li class="fix">修复：取点坐标基准统一，框选/取点与运行时注入使用同一窗口坐标，不再偏移</li>
+        <li class="new">透明 PNG 模板识别：支持带透明通道的图片模板匹配，找图更精准</li>
+        <li class="new">准星选窗：锁定目标窗口，坐标自适应窗口移动与缩放</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.2.x（8 月初）</h2>
+        <span class="date">2026-08</span>
+      </div>
+      <ul>
+        <li class="new">后台运行模式：对目标窗口后台注入操作，不占用真实鼠标键盘</li>
+        <li class="new">授权系统上线：机器码绑定 + 激活码，支持永久 / 7 / 15 / 30 / 90 天限时模式，到期自动还原免费版</li>
+        <li class="new">设置中新增窗口透明度控件（图标保持 100% 不透明）</li>
+        <li class="new">主栏显示授权剩余天数（不足 3 天红色提醒）</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.1.x</h2>
+        <span class="date">2026-07</span>
+      </div>
+      <ul>
+        <li class="new">桌面伙伴「脚本喵」上线：右下角 BongoCat 风格小猫，支持多套外观风格（耳机 / 蝴蝶结）</li>
+        <li class="new">列表交互升级：步骤支持框选多选、整组拖拽、占位排序</li>
+        <li class="new">26 种动作类型全覆盖：鼠标键盘、图像识别、流程控制、变量表达式、交互弹窗、定时停止</li>
+        <li class="new">JSON 源码编辑：图形化与源码双向同步</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.0</h2>
+        <span class="date">2026-06</span>
+      </div>
+      <ul>
+        <li class="new">脚本喵首个正式版本发布：可视化自动化脚本工作台</li>
+        <li class="new">支持鼠标点击 / 键盘输入 / 循环等核心动作，F5 运行、F8 紧急停止</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 脚本喵 · 让自动化更简单 · v1.3.14 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a>
+  </div>
+</footer>
+
+</body>
+</html>
