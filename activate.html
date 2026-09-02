@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>脚本喵激活码 - 在线生成与激活教程 | 脚本喵激活</title>
+<meta name="description" content="脚本喵激活码在线生成与激活教程：获取本机机器码、生成激活码、输入激活三步完成完整版解锁。支持永久版与 7/15/30/90 天限时版，机器码绑定一台设备。">
+<meta name="keywords" content="脚本喵激活码,脚本喵激活,脚本喵授权,脚本喵完整版,脚本喵机器码,脚本喵注册码">
+<meta property="og:title" content="脚本喵激活码 - 在线生成与激活教程">
+<meta property="og:description" content="三步完成脚本喵完整版激活：获取机器码 → 生成激活码 → 输入激活。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jiaobenmiao.github.io/activate.html">
+<meta property="og:image" content="https://jiaobenmiao.github.io/scriptmeow.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "脚本喵激活码怎么获取？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "启动脚本喵 → 右上角 ⚙ 设置 → 授权与激活 → 复制本机机器码，发消息给作者（QQ群 1108351043 或电话 13870170818），作者返回激活码后输入即可激活。也可在官网激活码页面按提示自助获取。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "脚本喵完整版多少钱？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "脚本喵完整版为一次性买断，联系作者获取价格与激活码。激活码绑定一台设备的机器码，永久使用；另有 7 / 15 / 30 / 90 天限时版可选，到期自动还原免费版。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "机器码是什么？会变化吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "机器码是脚本喵根据您电脑的硬件信息（CPU、网卡等）生成的唯一设备标识，用于绑定激活码。在云电脑或虚拟机环境，部分硬件信息可能随重启变化，此时联系作者重新签发激活码即可。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "激活码到期后会怎样？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "限时激活码到期后，脚本喵自动还原为免费版，不影响正常使用免费功能，重新输入新的激活码即可恢复完整版。"
+      }
+    }
+  ]
+}
+</script>
+<link rel="icon" href="scriptmeow.png" type="image/png">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #181818; --panel: #232323; --ctrl: #2e2e2e; --border: #333;
+    --fg: #f0f0f0; --fg-d: #b8b8b8; --accent: #00d95f; --accent-d: #00a847;
+    --warn: #ffd479;
+  }
+  html, body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 18px 0; border-bottom: 1px solid var(--border); background: rgba(0,0,0,.2); position: sticky; top: 0; backdrop-filter: blur(8px); z-index: 10; }
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; }
+  .brand img { width: 32px; height: 32px; }
+  .navlinks a { color: var(--fg-d); margin-left: 24px; font-size: 14px; }
+  .navlinks a:hover { color: var(--accent); text-decoration: none; }
+  .navlinks a.cur { color: var(--accent); }
+  .page { padding: 60px 0 40px; }
+  .page h1 { font-size: 36px; font-weight: 600; margin-bottom: 12px; }
+  .page .lead { color: var(--fg-d); font-size: 16px; max-width: 720px; margin-bottom: 40px; }
+  section.block { padding: 40px 0; border-top: 1px solid var(--border); }
+  section h2 { font-size: 24px; margin-bottom: 16px; font-weight: 600; }
+  section h2 .num { color: var(--accent); margin-right: 8px; }
+  .steps { counter-reset: step; }
+  .step { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; }
+  .step h3 { font-size: 16px; margin-bottom: 8px; }
+  .step h3::before { counter-increment: step; content: counter(step) ". "; color: var(--accent); }
+  .step p, .step li { color: var(--fg-d); font-size: 14px; }
+  .kbd { background: var(--ctrl); border: 1px solid var(--border); border-radius: 4px; padding: 1px 8px; font-family: Consolas, monospace; font-size: 13px; color: var(--accent); }
+  .gen-btn { display: inline-block; padding: 14px 36px; font-size: 16px; font-weight: 600; background: var(--accent); color: #000; border-radius: 10px; margin: 10px 0; }
+  .gen-btn:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; }
+  .contact { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; }
+  .cbox { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px 24px; }
+  .cbox .lbl { color: var(--fg-d); font-size: 13px; }
+  .cbox .val { font-size: 20px; font-weight: 600; color: var(--accent); margin-top: 4px; }
+  .note { background: var(--ctrl); border-left: 3px solid var(--warn); border-radius: 6px; padding: 14px 18px; margin: 20px 0; color: var(--fg-d); font-size: 14px; }
+  .faq details { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; }
+  .faq summary { cursor: pointer; font-weight: 600; font-size: 15px; }
+  .faq details p { color: var(--fg-d); font-size: 14px; margin-top: 10px; }
+  footer { padding: 30px 0; text-align: center; color: var(--fg-d); font-size: 13px; border-top: 1px solid var(--border); margin-top: 30px; }
+  @media (max-width: 640px) {
+    .page h1 { font-size: 28px; }
+    .navlinks { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="scriptmeow.png" alt="脚本喵">
+      <a href="index.html" style="color:var(--fg)"><span>脚本喵</span></a>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">首页</a>
+      <a href="download.html">下载</a>
+      <a href="tutorial.html">教程</a>
+      <a href="changelog.html">更新日志</a>
+      <a href="activate.html" class="cur">激活码</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap page">
+  <h1>脚本喵激活码</h1>
+  <p class="lead">脚本喵完整版为一次性买断授权，机器码绑定一台设备。以下三步即可完成激活，解锁全部 26 种动作、定时启动、准星选窗等完整功能。</p>
+
+  <a class="gen-btn" href="licgen.html">🎫 打开激活码生成器</a>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">01</span>激活三步走</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>获取本机机器码</h3>
+        <p>启动脚本喵 → 右上角 <span class="kbd">⚙ 设置</span> → <span class="kbd">授权与激活</span> → 点击「复制机器码」，把机器码保存下来（格式类似 <span class="kbd">XXXX-XXXX-XXXX-XXXX</span>）。</p>
+      </div>
+      <div class="step">
+        <h3>生成 / 获取激活码</h3>
+        <p>将机器码发送给作者（QQ群 1108351043 或电话 13870170818），作者返回激活码后复制。也可打开上方的「激活码生成器」按提示操作。</p>
+      </div>
+      <div class="step">
+        <h3>输入激活码完成解锁</h3>
+        <p>回到脚本喵 <span class="kbd">⚙ 设置 → 授权与激活</span>，粘贴激活码，点击「激活」。成功后主栏会显示授权状态与剩余天数，完整版功能即刻可用。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">02</span>授权类型</h2>
+    <table style="width:100%;border-collapse:collapse;margin-top:8px">
+      <tr><th style="text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--fg-d)">类型</th><th style="text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--fg-d)">说明</th></tr>
+      <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">永久版</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--fg-d)">一次性买断，绑定一台设备永久使用，免费获得后续更新</td></tr>
+      <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">限时版（7 / 15 / 30 / 90 天）</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--fg-d)">按需购买，到期自动还原免费版，随时可续</td></tr>
+    </table>
+    <div class="note">⚠ 免费版无需激活，下载即用，可体验 6 个核心动作的完整工作流（点击 / 移动鼠标 / 循环 / 跳出循环 / 点击图片 / 输入文字）。</div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">03</span>联系作者</h2>
+    <div class="contact">
+      <div class="cbox">
+        <div class="lbl">QQ群</div>
+        <div class="val">1108351043</div>
+      </div>
+      <div class="cbox">
+        <div class="lbl">电话</div>
+        <div class="val">13870170818</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">04</span>常见问题</h2>
+    <div class="faq">
+      <details open>
+        <summary>脚本喵激活码怎么获取？</summary>
+        <p>启动脚本喵 → 设置 → 授权与激活 → 复制机器码，发消息给作者（QQ群 1108351043 或电话 13870170818），作者返回激活码后输入即可。</p>
+      </details>
+      <details>
+        <summary>机器码会变化吗？</summary>
+        <p>机器码由电脑硬件信息（CPU、网卡等）生成。在云电脑或虚拟机环境，部分硬件信息可能随重启变化，此时联系作者重新签发激活码即可。</p>
+      </details>
+      <details>
+        <summary>激活码到期后会怎样？</summary>
+        <p>限时激活码到期后自动还原为免费版，不影响免费功能使用，输入新激活码即可恢复完整版。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 脚本喵 · 让自动化更简单 · v1.3.14 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="changelog.html">更新日志</a>
+  </div>
+</footer>
+
+</body>
+</html>

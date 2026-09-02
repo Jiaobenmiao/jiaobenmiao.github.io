@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>脚本喵使用教程 - 从入门到精通 | 脚本喵教程</title>
+<meta name="description" content="脚本喵使用教程合集：新建脚本、添加动作、图像识别找图、循环与条件分支、定时运行、后台运行、监听动作等，从入门到精通，一步步教你用好脚本喵自动化工具。">
+<meta name="keywords" content="脚本喵教程,脚本喵使用教程,脚本喵怎么用,自动化脚本教程,按键精灵教程,鼠标自动化教程,图像识别教程,后台运行教程">
+<meta property="og:title" content="脚本喵使用教程 - 从入门到精通">
+<meta property="og:description" content="脚本喵教程合集：新建脚本、图像识别、循环分支、定时与后台运行，从入门到精通。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jiaobenmiao.github.io/tutorial.html">
+<meta property="og:image" content="https://jiaobenmiao.github.io/scriptmeow.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "脚本喵怎么新建一个脚本？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "启动脚本喵后，在首页点击「新建脚本」，在脚本名称处输入名字，然后在左侧步骤列表点击「＋ 添加步骤」选择动作类型，右侧填写参数，按 F5 或点击 ▶ 运行即可。所有步骤像搭积木一样拖拽排序。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "脚本喵怎么实现图像识别自动点击？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "选择「点击图片」动作，点「📷 框选截图」在屏幕上框出目标图标，设置相似度（一般 80% 即可），脚本运行时会自动在屏幕或指定区域找到该图片并点击。支持「查找图片」「等待图片」搭配循环实现「找到就点、找不到就等」的流程。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "脚本喵能定时运行脚本吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "完整版支持定时启动：在运行面板设置开始时间与运行时长，或使用「⏰ 定时停止」动作。到点后脚本喵会自动启动脚本，适合挂机类场景。免费版需升级完整版解锁此功能。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "脚本运行中怎么紧急停止？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "三种方式：按 F8 紧急停止、按 F7 暂停、或把鼠标甩到屏幕左上角立即急停。任何时刻都能安全中止脚本，不会卡死。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "脚本喵支持后台运行吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "支持。使用「准星选窗」锁定目标窗口后，脚本喵可对指定窗口后台注入操作，不占用真实鼠标键盘，你可以在电脑上同时做其他事情。"
+      }
+    }
+  ]
+}
+</script>
+<link rel="icon" href="scriptmeow.png" type="image/png">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #181818; --panel: #232323; --ctrl: #2e2e2e; --border: #333;
+    --fg: #f0f0f0; --fg-d: #b8b8b8; --accent: #00d95f; --accent-d: #00a847;
+  }
+  html, body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 18px 0; border-bottom: 1px solid var(--border); background: rgba(0,0,0,.2); position: sticky; top: 0; backdrop-filter: blur(8px); z-index: 10; }
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; }
+  .brand img { width: 32px; height: 32px; }
+  .navlinks a { color: var(--fg-d); margin-left: 24px; font-size: 14px; }
+  .navlinks a:hover { color: var(--accent); text-decoration: none; }
+  .navlinks a.cur { color: var(--accent); }
+  .page { padding: 60px 0 40px; }
+  .page h1 { font-size: 36px; font-weight: 600; margin-bottom: 12px; }
+  .page .lead { color: var(--fg-d); font-size: 16px; max-width: 720px; margin-bottom: 40px; }
+  section.block { padding: 40px 0; border-top: 1px solid var(--border); }
+  section h2 { font-size: 24px; margin-bottom: 16px; font-weight: 600; }
+  section h2 .num { color: var(--accent); margin-right: 8px; }
+  .steps { counter-reset: step; }
+  .step { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; }
+  .step h3 { font-size: 16px; margin-bottom: 8px; }
+  .step h3::before { counter-increment: step; content: counter(step) ". "; color: var(--accent); }
+  .step p, .step li { color: var(--fg-d); font-size: 14px; }
+  .step ul { padding-left: 18px; }
+  .kbd { background: var(--ctrl); border: 1px solid var(--border); border-radius: 4px; padding: 1px 8px; font-family: Consolas, monospace; font-size: 13px; color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px; }
+  th { color: var(--fg-d); font-weight: 600; }
+  td { color: var(--fg); }
+  td .em { color: var(--accent); }
+  .note { background: var(--ctrl); border-left: 3px solid var(--accent); border-radius: 6px; padding: 14px 18px; margin: 20px 0; color: var(--fg-d); font-size: 14px; }
+  .faq details { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; }
+  .faq summary { cursor: pointer; font-weight: 600; font-size: 15px; }
+  .faq details p { color: var(--fg-d); font-size: 14px; margin-top: 10px; }
+  footer { padding: 30px 0; text-align: center; color: var(--fg-d); font-size: 13px; border-top: 1px solid var(--border); margin-top: 30px; }
+  @media (max-width: 640px) {
+    .page h1 { font-size: 28px; }
+    .navlinks { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="scriptmeow.png" alt="脚本喵">
+      <a href="index.html" style="color:var(--fg)"><span>脚本喵</span></a>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">首页</a>
+      <a href="download.html">下载</a>
+      <a href="tutorial.html" class="cur">教程</a>
+      <a href="changelog.html">更新日志</a>
+      <a href="activate.html">激活码</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap page">
+  <h1>脚本喵使用教程</h1>
+  <p class="lead">脚本喵是可视化自动化工具，不需要写代码。本教程从新建第一个脚本开始，带你一步步掌握鼠标键盘自动化、图像识别、循环分支与后台运行。全部内容 10 分钟读完。</p>
+
+  <a class="dl-btn" href="download.html" style="display:inline-block;padding:12px 28px;font-size:15px;font-weight:600;background:var(--accent);color:#000;border-radius:10px">⬇ 还没下载？先装脚本喵</a>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">01</span>快速入门：3 分钟做出第一个脚本</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>新建脚本</h3>
+        <p>启动脚本喵，点击「新建脚本」，输入名字（如"自动签到"）。</p>
+      </div>
+      <div class="step">
+        <h3>添加动作</h3>
+        <p>在步骤列表点击「＋ 添加步骤」，选择动作类型（如：点击、输入文字、等待），右侧填写参数。动作顺序就是执行顺序，可直接拖拽调整。</p>
+      </div>
+      <div class="step">
+        <h3>运行与停止</h3>
+        <p>按 <span class="kbd">F5</span> 或点击 ▶ 按钮运行脚本；<span class="kbd">F7</span> 暂停、<span class="kbd">F8</span> 紧急停止，鼠标甩到屏幕左上角也能立即急停。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">02</span>核心技巧：图像识别自动找图</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>框选目标图片</h3>
+        <p>选择「点击图片」动作，点击「📷 快捷框选截图」，在屏幕上框出要点击的图标（比如游戏里的按钮、网页上的签到入口）。截图会自动存入「我的图片」。</p>
+      </div>
+      <div class="step">
+        <h3>设置相似度</h3>
+        <p>相似度一般设 <span class="kbd">80%</span> 左右即可。界面变化大就调低，防止误点就调高。还支持指定搜索区域，缩小范围更快更准。</p>
+      </div>
+      <div class="step">
+        <h3>搭配循环"找到就点、找不到就等"</h3>
+        <p>典型写法：<span class="kbd">循环</span> → <span class="kbd">等待图片</span>（找不到时循环等待）→ <span class="kbd">点击图片</span> → <span class="kbd">跳出循环</span>。适合活动按钮未出现、需要持续等待的场景。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">03</span>进阶功能</h2>
+    <table>
+      <tr><th>功能</th><th>说明</th></tr>
+      <tr><td><span class="em">🔁 循环与条件分支</span></td><td>支持循环、跳出循环、if 条件分支、跳转，嵌套缩进清晰，可组合出任意复杂流程</td></tr>
+      <tr><td><span class="em">≡ 变量与表达式</span></td><td>设置变量 + 表达式求值，支持 + − × ÷ 运算，配合条件实现动态流程（如计数循环）</td></tr>
+      <tr><td><span class="em">🎯 准星选窗 + 后台运行</span></td><td>锁定目标窗口后脚本在窗口内运行，坐标自适应窗口移动/缩放；后台注入不占用真实鼠标键盘</td></tr>
+      <tr><td><span class="em">👂 监听动作</span></td><td>每个步骤可配置「条件满足 / 不满足 / 成功 / 失败」4 个分支，分别挂不同的子步骤，实现智能应对</td></tr>
+      <tr><td><span class="em">⏰ 定时启动</span></td><td>完整版支持设置开始时间与运行时长，到点自动运行，适合挂机场景</td></tr>
+      <tr><td><span class="em">💬 交互弹窗</span></td><td>提示 / 确认 / 输入弹窗，支持变量插值，脚本也可以"问"用户</td></tr>
+      <tr><td><span class="em">📋 JSON 源码</span></td><td>图形化与 JSON 双向同步，高级用户可直接编写复杂脚本</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">04</span>快捷键一览</h2>
+    <table>
+      <tr><th>按键</th><th>功能</th></tr>
+      <tr><td><span class="em">F5</span></td><td>运行当前脚本</td></tr>
+      <tr><td><span class="em">F7</span></td><td>暂停 / 继续</td></tr>
+      <tr><td><span class="em">F8</span></td><td>紧急停止</td></tr>
+      <tr><td><span class="em">F3</span></td><td>全屏框选截图（存入「我的图片」）</td></tr>
+      <tr><td><span class="em">鼠标甩左上角</span></td><td>立即紧急停止</td></tr>
+    </table>
+    <div class="note">💡 更多设置：右上角 ⚙ 设置 → 关于 / 快捷键 / 行为偏好，可自定义快捷键与运行行为。</div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2><span class="num">05</span>常见问题</h2>
+    <div class="faq">
+      <details open>
+        <summary>脚本喵怎么新建一个脚本？</summary>
+        <p>启动脚本喵 → 首页点击「新建脚本」→ 输入名称 → 「＋ 添加步骤」选动作 → 右侧填参数 → F5 运行。步骤可拖拽排序。</p>
+      </details>
+      <details>
+        <summary>脚本喵怎么实现图像识别自动点击？</summary>
+        <p>用「点击图片」动作 + 「📷 框选截图」框出目标图标，相似度设 80%，脚本会自动找图并点击；搭配「等待图片」「循环」可实现"找到就点、找不到就等"。</p>
+      </details>
+      <details>
+        <summary>脚本喵能定时运行脚本吗？</summary>
+        <p>完整版支持定时启动，可设置开始时间与运行时长，或使用「⏰ 定时停止」动作，到点自动运行。</p>
+      </details>
+      <details>
+        <summary>脚本运行中怎么紧急停止？</summary>
+        <p>F8 紧急停止、F7 暂停、或把鼠标甩到屏幕左上角立即急停，任何时候都能安全中止。</p>
+      </details>
+      <details>
+        <summary>脚本喵支持后台运行吗？</summary>
+        <p>支持。用「准星选窗」锁定目标窗口后，可对指定窗口后台注入操作，不占用真实鼠标键盘，可同时做其他事。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 脚本喵 · 让自动化更简单 · v1.3.14 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="changelog.html">更新日志</a>
+  </div>
+</footer>
+
+</body>
+</html>
