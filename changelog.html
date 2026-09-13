@@ -95,7 +95,7 @@
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.14</b></p>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.15</b></p>
   <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
@@ -104,9 +104,25 @@
 
     <div class="ver">
       <div class="vhead">
+        <h2>v1.3.15</h2>
+        <span class="date">2026-09-13</span>
+        <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="new"><b>「设置面板」动作</b>：脚本可弹出交互式面板，让操作者现场填写 / 勾选变量（如"是否分解宝石"打 √），决定后续步骤走向</li>
+        <li class="new"><b>「时间间隔」运行条件</b>：步骤可设置为每 30 秒 / 10 分钟 / 2 小时运行一次，循环脚本不再每轮都跑</li>
+        <li class="new"><b>子脚本完全独立</b>：插入的子脚本不再受父脚本全局设置 / 变量影响，作为独立模块运行</li>
+        <li class="new"><b>「读取文字」OCR 动作</b>：内置 PaddleOCR 引擎，可识别屏幕指定区域的中英文，按需提取数字或保留全文存入变量</li>
+        <li class="new"><b>「轻提示」toast 动作</b>：不阻塞脚本的飘屏提示，到点自动消失，告别"必须点确定才能继续"</li>
+        <li class="new"><b>多点位拖拽</b>：拖拽动作支持按顺序多点直线运动，可绕过障碍区域</li>
+        <li class="fix">修复：在含"跳转回步骤 1"的脚本里运行时，引擎被死循环卡住、界面显示"未响应"的问题</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
         <h2>v1.3.14</h2>
         <span class="date">2026-09-01</span>
-        <span class="badge">最新版</span>
       </div>
       <ul>
         <li class="fix">修复：监听动作弹窗空白问题（子步骤编辑窗口布局重构，4 个分支 Tab 全部正常显示）</li>
