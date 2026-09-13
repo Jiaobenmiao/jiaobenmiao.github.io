@@ -53,7 +53,7 @@
       "name": "脚本喵免费版和完整版有什么区别？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "免费版可体验点击、移动鼠标、循环、点击图片、输入文字等 6 个核心动作的完整工作流；完整版为一次性买断，解锁全部 26 种动作、定时启动、准星选窗等功能，机器码绑定一台设备永久使用。"
+        "text": "免费版可体验点击、移动鼠标、循环、点击图片、输入文字等 6 个核心动作的完整工作流；完整版由作者一对一签发激活码，解锁全部 30+ 种动作、定时启动、准星选窗等高级功能，机器码绑定本机授权防共享盗用。"
       }
     }
   ]
@@ -156,6 +156,8 @@
   <h1>脚本喵下载</h1>
   <p class="lead">脚本喵是 Windows 桌面自动化工具，把鼠标点击、键盘输入、图像识别组合成脚本，重复性工作一键自动完成。以下两种方式任选其一，都是 v1.3.14 最新版。</p>
 
+  <div class="note">⚠️ <b>下载前必读</b>：脚本喵是一款 Windows 自动化工具，<u>仅供合法用途</u>（个人效率/学习/办公自动化等）。用户自行编写和运行的所有脚本以及由此产生的一切后果，由使用者本人承担，与开发者无关。点击下载即表示您已阅读并同意上述声明。</div>
+
   <div class="grid">
     <div class="card">
       <h3>📦 安装向导版（推荐）</h3>
@@ -217,7 +219,7 @@
       </details>
       <details class="faq-item">
         <summary>免费版能用哪些功能？</summary>
-        <div class="fa">免费版可体验点击、移动鼠标、循环、跳出循环、点击图片、输入文字 6 个核心动作的完整工作流；完整版一次性买断，解锁全部 26 种动作与定时启动、准星选窗等高级功能。</div>
+        <div class="fa">免费版可体验点击、移动鼠标、循环、跳出循环、点击图片、输入文字 6 个核心动作的完整工作流；完整版由作者一对一签发激活码，解锁全部 30+ 种动作与定时启动、准星选窗等高级功能，机器码绑定本机授权防共享盗用。</div>
       </details>
     </div>
   </div>
@@ -239,6 +241,22 @@ const IN = 'https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.link/' + enco
 document.getElementById('dlInstaller').href = IN;
 document.getElementById('dlPortable').href = CP;
 document.getElementById('dlGH').href = 'https://jiaobenmiao.github.io/' + encodeURIComponent('脚本喵.exe');
+// 风险提示: 点击下载按钮 → 弹窗确认 → 同意后才真正下载
+function _riskConfirm(targetUrl, kind) {
+  if (confirm(
+    '【脚本喵 下载风险提示】\n\n' +
+    '脚本喵是 Windows 自动化工具, 仅供合法用途 (个人效率/学习/办公自动化)。\n' +
+    '您所编写和运行的所有脚本及由此产生的一切后果, 由使用者本人承担,\n' +
+    '与开发者无关。\n\n' +
+    '点击「确定」即表示您已阅读并同意上述声明, 继续下载' + (kind||'') + '。\n' +
+    '点击「取消」将中止下载。'
+  )) {
+    window.open(targetUrl, '_blank');
+  }
+}
+document.getElementById('dlInstaller').onclick = function (e) { e.preventDefault(); _riskConfirm(IN, '安装向导版'); };
+document.getElementById('dlPortable').onclick  = function (e) { e.preventDefault(); _riskConfirm(CP, '单文件版');  };
+document.getElementById('dlGH').onclick         = function (e) { e.preventDefault(); _riskConfirm('https://jiaobenmiao.github.io/' + encodeURIComponent('脚本喵.exe'), 'GitHub 备用版'); };
 </script>
 
 </body>
