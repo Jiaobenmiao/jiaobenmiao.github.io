@@ -236,8 +236,8 @@
     <p class="lead">桌面自动化工作的得力伙伴 — 从简单点击到复杂流程, 脚本喵帮你把每天重复的事全部跑完。</p>
     <div class="grid">
       <div class="feat"><div class="ico">M</div><h3>鼠标键盘操作</h3><p>点击 / 双击 / 右键 / 拖拽 / 滚轮 / 移动 / 按键 / 组合键 — 支持起终点分开取点</p></div>
-      <div class="feat"><div class="ico">F</div><h3>图像识别</h3><p>查找图片 / 点击图片 / 等待图片 — 内置框选截图, 相似度滑条, 区域搜索</p></div>
-      <div class="feat"><div class="ico">L</div><h3>流程控制</h3><p>循环 / 跳出循环 / 条件分支 if / 跳转 / 子脚本调用 — 嵌套缩进</p></div>
+      <div class="feat"><div class="ico">F</div><h3>图像识别</h3><p>图片 / 颜色 / 文字 识别定位 — 内置框选截图、相似度滑条、区域搜索</p></div>
+      <div class="feat"><div class="ico">L</div><h3>流程控制</h3><p>开始循环 / 循环结束 / 条件分支 / 跳转 / 运行子脚本 — 嵌套缩进</p></div>
       <div class="feat"><div class="ico">V</div><h3>变量与表达式</h3><p>设置变量 + 表达式求值, 支持 + - x / 运算, 配合条件实现动态流程</p></div>
       <div class="feat"><div class="ico">T</div><h3>运行前等待</h3><p>每个动作可单独设置运行前等待时间, 支持毫秒/秒/分钟/小时单位</p></div>
       <div class="feat"><div class="ico">W</div><h3>准星选窗口</h3><p>锁定目标窗口后脚本在窗口内运行, 坐标自适应窗口移动/缩放</p></div>
@@ -254,7 +254,7 @@
 <section class="block" id="actions">
   <div class="wrap">
     <h2><span class="num">02</span>30+ 种动作类型</h2>
-    <p class="lead">从基础到高级, 覆盖日常自动化所需的全部场景。完整版解锁全部动作; 免费版也能用 6 个核心动作体验完整工作流。</p>
+    <p class="lead">从基础到高级, 覆盖日常自动化所需的全部场景。完整版解锁全部动作; 免费版也能用 8 个核心动作体验完整工作流。</p>
     <div class="actions">
       <div class="act"><span class="em">·</span>点击</div>
       <div class="act"><span class="em">·</span>双击</div>
@@ -264,7 +264,7 @@
       <div class="act"><span class="em">·</span>滚轮</div>
       <div class="act"><span class="em">·</span>等待</div>
       <div class="act"><span class="em">·</span>查找图片</div>
-      <div class="act"><span class="em">·</span>点击图片</div>
+      <div class="act"><span class="em">·</span>等待</div>
       <div class="act"><span class="em">·</span>等待图片</div>
       <div class="act"><span class="em">·</span>输入文字</div>
       <div class="act"><span class="em">·</span>按键</div>
@@ -272,7 +272,7 @@
       <div class="act"><span class="em">·</span>按住键</div>
       <div class="act"><span class="em">·</span>松开键</div>
       <div class="act"><span class="em">·</span>循环</div>
-      <div class="act"><span class="em">·</span>跳出循环</div>
+      <div class="act"><span class="em">·</span>循环结束</div>
       <div class="act"><span class="em">·</span>条件分支</div>
       <div class="act"><span class="em">·</span>跳转</div>
       <div class="act"><span class="em">·</span>运行子脚本</div>
@@ -293,14 +293,14 @@
 <section class="block" id="versions">
   <div class="wrap">
     <h2><span class="num">03</span>版本与授权</h2>
-    <p class="lead">免费试用 6 个核心动作完整工作流; 联系作者一对一签发激活码, 解锁全部动作与高级功能。</p>
+    <p class="lead">免费试用 8 个核心动作完整工作流; 联系作者一对一签发激活码, 解锁全部动作与高级功能。</p>
     <div class="versions">
       <div class="ver">
         <h3>免费版</h3>
         <div class="price">¥0</div>
         <div class="psub">无需注册, 下载即用</div>
         <ul>
-          <li>点击 / 移动鼠标 / 循环 / 跳出循环 / 点击图片 / 输入文字</li>
+          <li>点击 / 双击 / 右键 / 移动鼠标 / 输入文字 / 等待 / 开始循环 / 循环结束</li>
           <li>可视化编辑 + 框选截图 + 脚本喵伙伴</li>
           <li class="off">定时启动与准星选窗不可用</li>
         </ul>
@@ -328,7 +328,7 @@
     <p class="lead center">关于脚本喵, 你可能想知道的。</p>
     <div class="faq">
       <details class="faq-item"><summary>脚本喵需要安装 Python 或任何运行环境吗?</summary><div class="fa">不需要。脚本喵是打包好的单文件 EXE, 内置全部运行环境, 双击即用, 首次启动约 8 秒完成解压。</div></details>
-      <details class="faq-item"><summary>免费版和完整版有什么区别?</summary><div class="fa">免费版可使用 6 个核心动作(点击 / 移动鼠标 / 循环 / 跳出循环 / 点击图片 / 输入文字), 体验完整工作流; 完整版由作者一对一签发激活码, 解锁全部 30+ 种动作(含 OCR 文字识别 / 设置面板 / 轻提示)、定时启动与准星选窗等高级功能, 机器码绑定本机授权防共享盗用。</div></details>
+      <details class="faq-item"><summary>免费版和完整版有什么区别?</summary><div class="fa">免费版可使用 8 个核心动作(点击 / 双击 / 右键 / 移动鼠标 / 输入文字 / 等待 / 开始循环 / 循环结束), 体验完整工作流; 完整版由作者一对一签发激活码, 解锁全部 30+ 种动作(含 OCR 文字识别 / 设置面板 / 轻提示)、定时启动与准星选窗等高级功能, 机器码绑定本机授权防共享盗用。</div></details>
       <details class="faq-item"><summary>运行脚本时, 鼠标还能做别的事吗?</summary><div class="fa">可以。脚本喵采用 Windows 窗口消息直接投递技术, 脚本可在后台全屏运行且不占用你的真实鼠标 — 脚本跑着, 你照样能拖文件、刷网页、切窗口, 完全互不打扰。</div></details>
       <details class="faq-item"><summary>脚本运行出错了怎么办?</summary><div class="fa">按 F8 可随时紧急停止, 鼠标甩到屏幕左上角也能急停。日志区会实时显示每个步骤的执行进度, 方便定位问题。</div></details>
       <details class="faq-item"><summary>激活码可以换电脑用吗?</summary><div class="fa">激活码绑定本机机器码(CPU + 网卡 + 主机名生成)。换电脑需重新生成激活码, 请联系作者获取。</div></details>
