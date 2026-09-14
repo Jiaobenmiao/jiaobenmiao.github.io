@@ -121,6 +121,16 @@
   details.faq-item[open] summary::after { content: "-"; }
   details.faq-item .fa { padding: 0 20px 16px; color: var(--text-d); font-size: 13.5px; }
 
+
+  /* 安装时安全提示图文指引 */
+  .guide { display: flex; flex-direction: column; gap: 18px; }
+  .step { display: flex; gap: 16px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+  .step .n { flex: 0 0 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .step > div { flex: 1; }
+  .step b { color: var(--text); font-size: 14.5px; }
+  .step p { color: var(--text-d); font-size: 13.5px; margin: 6px 0 10px; }
+  .step img { max-width: 100%; width: 420px; border: 1px solid var(--border-d); border-radius: 8px; display: block; }
+
   footer { padding: 34px 0; text-align: center; color: var(--text-d2); font-size: 13px; border-top: 1px solid var(--border); margin-top: 20px; }
   footer a { color: var(--text-d); }
 
@@ -146,6 +156,7 @@
       <a href="tutorial.html">教程</a>
       <a href="changelog.html">更新日志</a>
       <a href="activate.html">激活码</a>
+      <a href="#smartscreen">安全提示</a>
       <a class="nav-dl" href="download.html">立即下载</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="菜单">=</button>
@@ -223,6 +234,24 @@
         <div class="fa">免费版可体验 点击 / 双击 / 右键 / 移动鼠标 / 输入文字 / 等待 / 开始循环 / 循环结束 共 8 个核心动作的完整工作流；完整版由作者一对一签发激活码，解锁全部 30+ 种动作与定时启动、准星选窗等高级功能，机器码绑定本机授权防共享盗用。</div>
       </details>
     </div>
+  </div>
+</section>
+
+<section class="block" id="smartscreen">
+  <div class="wrap">
+    <h2><span class="num">03</span>安装时提示"无法验证此文件是否安全"？</h2>
+    <p class="lead">这是 Windows 对<b>未签名程序</b>的常规安全提醒（<b>不是病毒警告</b>）。脚本喵不含任何恶意代码，按下面 3 步放心安装即可。</p>
+    <div class="guide">
+      <div class="step"><span class="n">1</span><div><b>浏览器提示"通常不会下载…"</b>
+        <p>点提示右侧的「…」，选择「<b>仍然保留</b>」，文件会正常保存到下载目录。</p>
+        <img src="smartscreen-bar.png" alt="浏览器下载安全提示"></div></div>
+      <div class="step"><span class="n">2</span><div><b>双击安装器后弹出安全提醒</b>
+        <p>若出现「Microsoft Defender SmartScreen 无法验证此文件是否安全」的窗口，点「<b>更多信息</b>」→ 再点「<b>仍然保留</b>」（或「仍要运行」）。</p>
+        <img src="smartscreen-keep.png" alt="SmartScreen 无法验证此文件"></div></div>
+      <div class="step"><span class="n">3</span><div><b>正常安装</b>
+        <p>之后按安装向导完成安装即可，不影响任何功能与使用。</p></div></div>
+    </div>
+    <div class="note">💡 <b>为什么会有这个提示？</b>脚本喵由个人开发者制作，暂未购买微软代码签名证书（每年数千元），Windows 会对所有未签名的新程序给出这条通用提醒。若安全软件误报，请将其加入信任区。</div>
   </div>
 </section>
 
