@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /licgen.html
+Disallow: /licgen
 
 Sitemap: https://jiaobenmiao.github.io/sitemap.xml
