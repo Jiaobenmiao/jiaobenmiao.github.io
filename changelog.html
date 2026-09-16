@@ -96,7 +96,7 @@
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.21</b></p>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.22</b></p>
   <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
@@ -105,9 +105,23 @@
 
     <div class="ver">
       <div class="vhead">
-        <h2>v1.3.21</h2>
+        <h2>v1.3.22</h2>
         <span class="date">2026-09-16</span>
         <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="new"><b>修复</b>：小窗口与大窗口的<b>左右栏宽度分开记忆</b>——之前切换最大化 / 还原时「自动套用该档宽度」这一步实际没生效（底层事件绑定被覆盖），现已真正生效</li>
+        <li class="new"><b>顶栏建议文字不再被压成一条糊</b>：窗口较小时它以前会被压到只剩三分之一宽、几乎看不清；现在会<b>干净地收起来</b>，窗口变宽后自动回来</li>
+        <li class="new"><b>窗口较矮时，底部日志区自动收窄</b>，把高度让给上面的编辑区</li>
+        <li class="new"><b>小屏幕 / 窗口调小时更不容易丢功能</b>：首页「目标窗口」设置区、底部「运行方式 / 切换风格 / 清空」都不会再被挤出去</li>
+        <li class="new"><b>提示</b>：不建议把窗口缩到 900×600 以下 —— 实测更小时会出现按钮被挤掉的情况，当前下限就是按这个实测结果定的</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.3.21</h2>
+        <span class="date">2026-09-16</span>
       </div>
       <ul>
         <li class="new"><b>快捷键现在任何窗口都能按了</b>：以前「运行脚本」「坐标/截图」只有在脚本喵窗口处于最前面时才有效，切到游戏或浏览器里按就没反应——现在它们是<b>系统级全局热键</b>，焦点在哪都管用</li>
@@ -307,7 +321,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.21 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.22 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
