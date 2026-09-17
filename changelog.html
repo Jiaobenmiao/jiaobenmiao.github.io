@@ -96,7 +96,7 @@
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.25</b></p>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.26</b></p>
   <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
@@ -105,9 +105,33 @@
 
     <div class="ver">
       <div class="vhead">
-        <h2>v1.3.25</h2>
+        <h2>v1.3.26</h2>
         <span class="date">2026-09-17</span>
         <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="new"><b>修：点「运行」后要干等十几秒才开始动</b> ——
+          以前每次运行都会同步初始化文字识别引擎（首次 10~60 秒），
+          看着就像"脚本没跑起来 / 鼠标没被接管"。
+          现在<b>只有脚本真的用到文字 / 图片 / 颜色识别时才会等</b>，
+          纯坐标脚本<b>点下就跑</b></li>
+        <li class="new"><b>真实鼠标模式讲清楚了</b>：勾上后运行日志会明确写
+          「🖱 真实鼠标模式：你的光标将由脚本全程操控 —— 移动过去 → 按下 → 拖动 → 松开，
+          操作完停在目标处」，一眼就能确认是不是真的接管了</li>
+        <li class="new"><b>首页更清爽</b>：「删除 / 复制 / 刷新」收进「⋯ 更多」菜单
+          （原来 6 个按钮在小窗口下会把「刷新」压到看不见）；
+          首页只留 <b>＋新建 / ✎重命名 / ⋯更多</b></li>
+        <li class="new"><b>按钮不再被挤压</b>：首页按钮改为按内容自适应；
+          最大化窗口时顶栏按钮会自动放大一圈，更好点</li>
+        <li class="new"><b>新手指引补全顶栏介绍</b>：原来只讲了「运行」，
+          现在逐个讲 —— 运行控制 / 极简模式 / 坐标截图 / 中转站·不透明度·置顶 / 设置与录制（共 23 步）</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.3.25</h2>
+        <span class="date">2026-09-17</span>
       </div>
       <ul>
         <li class="new"><b>新手指引重做成「浏览式讲解」</b>：不再让你动手做脚本，
@@ -391,7 +415,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.25 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.26 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
