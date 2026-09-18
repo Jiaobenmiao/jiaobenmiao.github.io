@@ -96,7 +96,7 @@
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.30</b></p>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.31</b></p>
   <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
@@ -105,9 +105,36 @@
 
     <div class="ver">
       <div class="vhead">
-        <h2>v1.3.30</h2>
+        <h2>v1.3.31</h2>
         <span class="date">2026-09-18</span>
         <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="new"><b>新增：单独「测试运行该步骤」</b> ——
+          步骤上点右键，菜单里在「从此运行…」下面多了一条
+          <b>「测试运行该步骤」</b>。它的意思是<b>只跑你选中的这一个动作</b>：
+          比如选中一个「循环」，它只测试循环这个动作本身，<b>循环体一步都不跑</b>；
+          选中「条件分支」，它会照常判断条件让你看到走了哪一支，但<b>分支里的动作不执行</b>。
+          调脚本时想确认某一步能不能用，不用再从头跑一遍</li>
+        <li class="new"><b>首页新增搜索框</b> ——
+          方案攒多了不好找，现在首页顶部可以<b>按关键词搜索</b>方案名
+          （搜「测」就能搜出「测试」），<b>按回车开始搜</b>，
+          命中的方案会<b>高亮显示</b>并给出「命中几个 / 共几个」的计数</li>
+        <li class="new"><b>新增筛选：更新时间 / 创建时间 / 文件大小</b> ——
+          搜索框右边的「筛选」可以展开第二行，里面三组条件<b>想用哪组就点哪组</b>，
+          选中后立刻生效。三组条件都很直白：多久没动过的、什么时候建的、文件多大。
+          已启用的那组会在名字后面带一个<b>蓝点</b>，一眼看出哪几项在起作用</li>
+        <li class="new"><b>三种「清干净」的方式分得很清</b> ——
+          搜索框里的 <b>✕</b> 只清关键词、<b>保留筛选条件</b>；
+          筛选面板里的<b>「条件重置」</b>只清条件、<b>保留关键词</b>；
+          独立的<b>「显示全部」</b>按钮则一次把关键词和条件全清掉，回到完整列表</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.3.30</h2>
+        <span class="date">2026-09-18</span>
       </div>
       <ul>
         <li class="new"><b>修：安装在中文路径下，文字识别会悄悄降级</b> ——
@@ -484,7 +511,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.30 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.31 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
