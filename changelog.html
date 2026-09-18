@@ -96,7 +96,7 @@
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.28</b></p>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.30</b></p>
   <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
@@ -105,9 +105,38 @@
 
     <div class="ver">
       <div class="vhead">
+        <h2>v1.3.30</h2>
+        <span class="date">2026-09-18</span>
+        <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="new"><b>修：安装在中文路径下，文字识别会悄悄降级</b> ——
+          安装版默认装在 <b>C:\Program Files\脚本喵</b>，而文字识别引擎读不了
+          <b>含中文的路径</b>，会静默退回系统识别（识别率明显变低）且不报错。
+          现在引擎会自动把模型搬到纯英文的临时目录再加载，
+          <b>不用改安装路径、不用重装</b>，精准识别照常工作</li>
+        <li class="new"><b>首页单击一次 = 选中方案</b> ——
+          选中的方案前面会带 <b>★</b> 并<b>蓝色高亮加粗</b>，删除 / 重命名 / 复制
+          都以它为目标，不再是"看着选中了却删不掉"。
+          <b>双击仍然是直接进入「图形化编辑」</b>，习惯不变</li>
+        <li class="new"><b>删除方案后停在首页</b> ——
+          以前删掉当前方案会自动跳进图形化编辑页（还顺手新建一个空方案），
+          现在<b>留在首页、也不自动选中别的方案</b>，删完就是干净的列表</li>
+        <li class="new"><b>点列表下方空白处 = 取消选中</b> ——
+          所有方案恢复无标记的干净状态，想重新选就再单击一下</li>
+        <li class="new"><b>修：启动提示里的快捷键是错的</b> ——
+          老版本写死显示「F7 暂停 / F8 停止」，而实际生效的是你自己设的键
+          （默认 <b>F2 暂停 / F3 停止</b>），照着提示按根本没反应。
+          现在提示会<b>跟着你的设置实时显示</b></li>
+        <li class="new"><b>修：启动日志里「🎉 激活成功」会连刷好几条</b> ——
+          看着像反复激活。现在只在真正激活时提示一次</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
         <h2>v1.3.28</h2>
         <span class="date">2026-09-17</span>
-        <span class="badge">最新版</span>
       </div>
       <ul>
         <li class="new"><b>修：顶栏靠右的状态显示不完整</b> ——
@@ -455,7 +484,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.28 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.30 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
