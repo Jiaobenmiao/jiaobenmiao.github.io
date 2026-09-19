@@ -96,7 +96,7 @@
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.31</b></p>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.32</b></p>
   <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
@@ -105,9 +105,38 @@
 
     <div class="ver">
       <div class="vhead">
+        <h2>v1.3.32</h2>
+        <span class="date">2026-09-19</span>
+        <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="new"><b>筛选条件支持自定义日期区间</b> ——
+          首页「筛选」里的<b>更新时间</b>和<b>创建时间</b>，现在除了「近 7 天 / 近 30 天 /
+          近 90 天」这些快捷档，还能<b>自己填一个日期范围</b>：
+          在右侧两个框里填起点和终点（比如 <b>2026-09-01</b> 到 <b>2026-09-18</b>），
+          <b>按回车就生效</b>。日期写法很宽松，<b>2026-09-01、2026/9/1、20260901</b>
+          都认；<b>只填一头也行</b>，只填起点就是从那天往后、只填终点就是到那天为止</li>
+        <li class="new"><b>填错了不会悄悄出错</b> ——
+          日期写得不认识、或者起点晚于终点，都会<b>明确提示并保持原样</b>，
+          不会把列表莫名其妙筛空，也不会出现"框里显示的是一套、实际按另一套在筛"</li>
+        <li class="new"><b>筛选选项各自带上边框</b> ——
+          每个可选项都框起来、一眼看清有几个选项、当前选中的是哪个；
+          已启用的那组名字后面还会带一个<b>蓝点</b></li>
+        <li class="new"><b>窄栏 / 大字号下不会被压扁</b> ——
+          窗口拉窄或使用大字号时，自定义日期框会<b>自动换到下一行</b>，
+          而不是被硬挤成一条缝</li>
+        <li class="new"><b>修：筛选按钮上的条件计数不刷新</b> ——
+          用自定义区间筛完后，按钮上会正确显示当前有几组条件在生效</li>
+        <li class="new"><b>修：刚启动就关窗会报错</b> ——
+          软件启动后十几秒内（文字识别引擎还在后台准备）如果直接关掉窗口，
+          会在后台抛一段错误；现在会安静退出</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
         <h2>v1.3.31</h2>
         <span class="date">2026-09-18</span>
-        <span class="badge">最新版</span>
       </div>
       <ul>
         <li class="new"><b>新增：单独「测试运行该步骤」</b> ——
@@ -511,7 +540,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.31 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.32 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
