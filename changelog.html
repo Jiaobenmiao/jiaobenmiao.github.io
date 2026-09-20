@@ -96,7 +96,7 @@
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.34</b></p>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.35</b></p>
   <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
@@ -105,9 +105,26 @@
 
     <div class="ver">
       <div class="vhead">
-        <h2>v1.3.34</h2>
+        <h2>v1.3.35</h2>
         <span class="date">2026-09-20</span>
         <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="new"><b>修：从「程序和功能」卸载时看不到卸载引导</b> ——
+          上一版做了三步卸载引导（确认 → 进度 → 完成），但<b>从系统的「程序和功能」里点卸载
+          时它不会出现</b>（会直接静默删除）。原因是注册表里的卸载命令多带了一个"静默"参数，
+          正好跳过了引导界面。现已改成<b>正常显示引导</b>；
+          同时也保留了静默卸载入口，留给脚本 / 批量部署场景</li>
+        <li class="new"><b>卸载更不容易出错</b> —— 卸载时会<b>校验目标目录是否合理</b>：
+          万一把系统目录、临时目录这类地方误判成安装目录，会<b>直接中止且一个文件都不动</b>，
+          并在界面上说明原因，而不是照着错误目标乱删</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.3.34</h2>
+        <span class="date">2026-09-20</span>
       </div>
       <ul>
         <li class="new"><b>上一版的两处界面细节修好了</b> ——
@@ -592,7 +609,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.34 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.35 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
