@@ -96,7 +96,7 @@
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.38</b></p>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.39</b></p>
   <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
@@ -105,9 +105,26 @@
 
     <div class="ver">
       <div class="vhead">
-        <h2>v1.3.38</h2>
+        <h2>v1.3.39</h2>
         <span class="date">2026-09-20</span>
         <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="fix"><b>修：子步骤上设的「运行条件 / 监听动作」偶尔保存不上</b> ——
+          这是老问题的真凶：程序内部同时维护了<b>两份子步骤数据</b>，
+          先设好条件、再点一次参数弹窗的「保存」，条件就被写到<b>已经被替换掉的那一份</b>上，
+          于是当场重新打开就发现设置没了。现已从根上改成<b>只维护一份数据</b>，
+          不再出现"明明点了保存却没存上"</li>
+        <li class="fix"><b>修：设置运行条件后按撤销，会跳回更早的状态</b> ——
+          撤销快照的时机不对，现在按一次撤销只回退一步</li>
+        <li class="fix"><b>修：自动更新的静默安装没有进度提示</b></li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.3.38</h2>
+        <span class="date">2026-09-20</span>
       </div>
       <ul>
         <li class="fix"><b>修：上一版（v1.3.37）装上打不开</b> ——
@@ -667,7 +684,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.38 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.39 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
