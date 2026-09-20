@@ -96,7 +96,7 @@
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.35</b></p>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.36</b></p>
   <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
@@ -105,9 +105,34 @@
 
     <div class="ver">
       <div class="vhead">
-        <h2>v1.3.35</h2>
+        <h2>v1.3.36</h2>
         <span class="date">2026-09-20</span>
         <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="new"><b>文字识别大幅提速：新增「文字搜索速度」三档</b> ——
+          以前找字是「把画面里所有文字都认一遍」，区域一大就慢得难受。
+          现在改成<b>先找出所有文字的位置，再挑最像的逐个认，找到就停</b>。
+          实测同一块区域同一个词：<b>68.8 秒 → 5.6 秒（快 12 倍）</b>，定位坐标只差 1 像素。
+          「设置 › 外观」里可以选三档，<b>鼠标悬停会有小字说明</b>：
+          <b>极速搜索</b>（最快，目标特别小时可能漏）／<b>标准搜索</b>（推荐，不会漏）／
+          <b>精准搜索</b>（最全最慢，适合区域很小的时候）</li>
+        <li class="fix"><b>修：选区红框「区域一大就不显示」</b> ——
+          重新框选时，之前选过的区域只要超过屏幕一半，红框就<b>一个都不画</b>，
+          等于让你摸黑重选。现在<b>一律画出来</b>，区域较大时还会在旁边标出
+          「当前区域 x,y 宽×高」</li>
+        <li class="fix"><b>修：「设置…」按钮被长文字挤出去</b> ——
+          步骤参数里的「运行条件」「监听动作」，以及全局设置里的「全局条件」，
+          值太长时会把右边的按钮挤出屏幕。现在<b>按钮永远优先占位</b>，
+          文字按 <b>选项 &gt; 备注 &gt; 其它</b> 的优先级让位 ——
+          <b>保证所有功能按钮都完整可见</b></li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
+        <h2>v1.3.35</h2>
+        <span class="date">2026-09-20</span>
       </div>
       <ul>
         <li class="new"><b>修：从「程序和功能」卸载时看不到卸载引导</b> ——
@@ -609,7 +634,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.35 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.36 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
