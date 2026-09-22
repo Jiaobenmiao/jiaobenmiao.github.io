@@ -204,8 +204,7 @@
     </div>
   </div>
 
-  <div class="note">💡 国内用户优先走高速下载源，速度更快；若下载失败，可点击下方「GitHub 备用下载」。</div>
-  <a id="dlGH" class="btn-ghost" href="#">🐙 GitHub 备用下载（单文件版）</a>
+  <div class="note">💡 国内用户走上方高速下载源，速度更快。</div>
   <a class="btn-ghost" href="index.html">🏠 返回官网首页</a>
 </div>
 
@@ -230,7 +229,7 @@
       </details>
       <details class="faq-item">
         <summary>下载速度慢怎么办？</summary>
-        <div class="fa">官网默认使用国内高速下载源。若仍较慢，可点击「GitHub 备用下载」，或稍后再试。</div>
+        <div class="fa">官网默认使用国内高速下载源，正常情况速度很快。若仍较慢，可稍等片刻后重试，或更换网络环境再试。</div>
       </details>
       <details class="faq-item">
         <summary>需要安装 Python 环境吗？</summary>
@@ -283,7 +282,6 @@ const RUNNER = 'https://b65bb4931b71411c97d3b7b2825549ac.app.workbuddy.link/' + 
 document.getElementById('dlInstaller').href = IN;
 document.getElementById('dlPortable').href = CP;
 document.getElementById('dlRunner').href = RUNNER;
-document.getElementById('dlGH').href = 'https://jiaobenmiao.github.io/' + encodeURIComponent('脚本喵.exe');
 // 风险提示: 点击下载按钮 → 弹窗确认 → 同意后才真正下载
 function _riskConfirm(targetUrl, kind) {
   if (confirm(
@@ -300,7 +298,6 @@ function _riskConfirm(targetUrl, kind) {
 document.getElementById('dlInstaller').onclick = function (e) { e.preventDefault(); _riskConfirm(IN, '安装向导版'); };
 document.getElementById('dlPortable').onclick  = function (e) { e.preventDefault(); _riskConfirm(CP, '单文件版');  };
 document.getElementById('dlRunner').onclick     = function (e) { e.preventDefault(); _riskConfirm(RUNNER, '脚本喵运行器'); };
-document.getElementById('dlGH').onclick         = function (e) { e.preventDefault(); _riskConfirm('https://jiaobenmiao.github.io/' + encodeURIComponent('脚本喵.exe'), 'GitHub 备用版'); };
 </script>
 
 </body>
