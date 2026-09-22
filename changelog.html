@@ -96,7 +96,7 @@
 
 <div class="wrap page">
   <h1>脚本喵更新日志</h1>
-  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.39</b></p>
+  <p class="lead">脚本喵每次更新都会记录在这里。建议保持最新版本，享受最新功能与体验优化。当前最新版：<b>v1.3.40</b></p>
   <a class="btn-primary" href="download.html">⬇ 下载最新版</a>
 </div>
 
@@ -105,9 +105,32 @@
 
     <div class="ver">
       <div class="vhead">
+        <h2>v1.3.40</h2>
+        <span class="date">2026-09-21</span>
+        <span class="badge">最新版</span>
+      </div>
+      <ul>
+        <li class="new"><b>新增「脚本喵运行器」</b> —— 一个<b>只看不做</b>的小工具：
+          打开别人给你的脚本，一键运行。它没有编辑功能，也没有录制按钮，
+          就是纯粹的播放器 —— 适合不想折腾脚本内容、只想跑起来的人。
+          <a href="download.html">去下载页</a>可以看到它</li>
+        <li class="new"><b>运行条件：「重复超时」可以选择单位了</b>（毫秒 / 秒 / 分钟 / 小时，默认秒），
+          再也不用自己算 300000 毫秒是几分钟</li>
+        <li class="new"><b>运行条件：「重复超时」留空 = 一直重复下去</b> ——
+          勾上「重复检查直到成功」但不填时间，它会<b>无限重复</b>直到条件满足，
+          不用再猜一个够长的数字</li>
+        <li class="new"><b>换台电脑也能用：坐标自动换算</b> ——
+          脚本会记住作者录制时的屏幕分辨率。你换一台分辨率不同的电脑运行，
+          脚本喵会<b>自动把坐标换算过去</b>，不用自己改每一个点。
+          （相差太大时会提示你一句；图像识别不受影响）</li>
+        <li class="fix"><b>安装时不再问「用哪个图标」</b> —— 统一用新版图标</li>
+      </ul>
+    </div>
+
+    <div class="ver">
+      <div class="vhead">
         <h2>v1.3.39</h2>
         <span class="date">2026-09-20</span>
-        <span class="badge">最新版</span>
       </div>
       <ul>
         <li class="fix"><b>修：子步骤上设的「运行条件 / 监听动作」偶尔保存不上</b> ——
@@ -684,7 +707,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.39 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · v1.3.40 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
