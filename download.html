@@ -21,7 +21,7 @@
       "name": "脚本喵怎么下载？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "在脚本喵官网点击「下载安装版」按钮即可下载安装向导版（约 28 MB，自动下载内含的 282 MB 主程序）；或点击「单文件版」直接下载免安装版本，双击即用。国内用户推荐使用高速下载源，速度更快。"
+        "text": "在脚本喵官网点击「下载安装版」按钮即可下载安装向导版（约 28 MB，自动下载内含的 376 MB 主程序）；或点击「单文件版」直接下载免安装版本，双击即用。国内用户推荐使用高速下载源，速度更快。"
       }
     },
     {
@@ -176,23 +176,23 @@
         <li>自动创建桌面快捷方式，可在 Windows「程序和功能」中卸载</li>
       </ul>
       <a id="dlInstaller" class="btn-primary" href="#">⬇ 下载安装向导版</a>
-      <div class="dl-meta">完整版 v1.3.45 · 28 MB · Windows 10/11 64 位</div>
+      <div class="dl-meta">完整版 v1.3.47 · 28 MB · Windows 10/11 64 位</div>
     </div>
     <div class="card">
       <h3>⚡ 单文件免安装版（轻量）</h3>
       <ul>
-        <li>约 95 MB，双击即用，无需安装</li>
+        <li>约 96 MB，双击即用，无需安装</li>
         <li>适合 U 盘随身携带、绿色使用</li>
         <li>首次启动约 8 秒解压</li>
         <li style="color:#b8860b">轻量版不含「读取文字」功能，需要请下载安装向导版</li>
       </ul>
       <a id="dlPortable" class="btn-primary" href="#">⬇ 下载单文件版</a>
-      <div class="dl-meta">完整版 v1.3.45 · 95 MB · 免安装绿色版</div>
+      <div class="dl-meta">完整版 v1.3.47 · 96 MB · 免安装绿色版</div>
     </div>
     <div class="card">
       <h3>▶ 脚本喵运行器（只看不做）</h3>
       <ul>
-        <li>约 95 MB，双击即用，专为「只想一键运行」的你</li>
+        <li>约 96 MB，双击即用，专为「只想一键运行」的你</li>
         <li>打开别人的脚本，点一下就跑，界面极简</li>
         <li><b>不能编辑脚本</b>，只有运行/停止/暂停/日志</li>
         <li>支持导入 .json、.jm 加密脚本与方案压缩包</li>
@@ -264,7 +264,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · 完整版 v1.3.45 · 运行器 v1.3.47 · <a href="index.html">首页</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · 完整版 v1.3.47 · 运行器 v1.3.47 · <a href="index.html">首页</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
@@ -275,7 +275,7 @@ navLinks.addEventListener('click', function (e) { if (e.target.tagName === 'A') 
 const path = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.navlinks a').forEach(function (a) { if (a.getAttribute('href') === path) a.classList.add('cur'); });
 const CP = 'https://b65bb4931b71411c97d3b7b2825549ac.app.workbuddy.link/' + encodeURIComponent('脚本喵.exe');
-const IN = 'https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.link/' + encodeURIComponent('脚本喵安装器_v1345.exe');
+const IN = 'https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.link/' + encodeURIComponent('脚本喵安装器_v1347.exe');
 // 脚本喵运行器: 独立 exe, 固定放在主程序同一个高速源目录下
 const RUNNER = 'https://b65bb4931b71411c97d3b7b2825549ac.app.workbuddy.link/' + encodeURIComponent('脚本喵运行器_v1347.exe');
 document.getElementById('dlInstaller').href = IN;
