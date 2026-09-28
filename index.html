@@ -90,6 +90,11 @@
   /* 🚨 (2026-09-28 天行者) Hero 区把另两个版本做成**次级小按钮**，
      紧随「立即下载」之后 —— 否则用户根本不知道还有单文件版/运行器。*/
   .btn-ghost.sm { padding: 10px 16px; font-size: 13px; }
+  /* 完整版主按钮再放大一档（天行者要求"稍微大一些"）*/
+  .btn-primary.lg { padding: 17px 46px; font-size: 17px; }
+  /* 主按钮独占一行，其余在下面一行 */
+  .hero-btns.col { flex-direction: column; align-items: flex-start; gap: 13px; }
+  .hero-sub { display: flex; gap: 12px; flex-wrap: wrap; }
   .hero-meta b { color: var(--text); }
 
   .hero-right .window { background: #fff; border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; }
@@ -203,12 +208,14 @@
         <div class="badge">桌面伙伴 · 可视化拖拽 · 免编程</div>
         <h1>像搭积木一样<br>组合出你的<span class="hl">自动化</span>脚本</h1>
         <p class="desc">脚本喵是一款 Windows 自动化键鼠脚本可视化工作台。鼠标点击、键盘输入、图像识别、循环分支、变量运算... 像搭积木一样把动作拖拽组合, 一键运行。每天重复的事交给脚本喵, 你的时间和专注力留给自己。</p>
-        <div class="hero-btns">
-          <a class="btn-primary" href="download.html">📦 完整版 v1.3.52</a>
-          <a class="btn-ghost sm" href="download.html">⚡ 单文件版（96MB · 免安装）</a>
-          <a class="btn-ghost sm" href="download.html">▶ 运行器（93MB · 只看不做）</a>
-          <a class="btn-ghost" href="tutorial.html">查看教程</a>
-        </div>
+          <div class="hero-btns col">
+            <a class="btn-primary lg" href="download.html">📦 完整版 v1.3.52</a>
+            <div class="hero-sub">
+              <a class="btn-ghost sm" href="download.html">⚡ 单文件版</a>
+              <a class="btn-ghost sm" href="download.html">▶ 运行器</a>
+              <a class="btn-ghost sm" href="tutorial.html">查看教程</a>
+            </div>
+          </div>
         <div class="hero-meta"><b>免费下载</b> · Windows 10 / 11 · 64 位 · 内置 30+ 种动作 · 真后台运行不占鼠标 · 国内高速源</div>
       </div>
       <div class="hero-right">
