@@ -27,7 +27,7 @@
   "operatingSystem": "Windows 10/11",
   "applicationCategory": "UtilitiesApplication",
   "applicationSubCategory": "Automation",
-  "softwareVersion": "1.3.51",
+  "softwareVersion": "1.3.52",
   "datePublished": "2026-08-24",
   "description": "脚本喵是 Windows 自动化键鼠脚本可视化工作台，支持鼠标键盘操作、图像识别、定时脚本与后台运行，拖拽即可生成自动化脚本。",
   "offers": {
@@ -201,7 +201,7 @@
         <h1>像搭积木一样<br>组合出你的<span class="hl">自动化</span>脚本</h1>
         <p class="desc">脚本喵是一款 Windows 自动化键鼠脚本可视化工作台。鼠标点击、键盘输入、图像识别、循环分支、变量运算... 像搭积木一样把动作拖拽组合, 一键运行。每天重复的事交给脚本喵, 你的时间和专注力留给自己。</p>
         <div class="hero-btns">
-          <a class="btn-primary" href="download.html">立即下载 v1.3.51</a>
+          <a class="btn-primary" href="download.html">立即下载 v1.3.52</a>
           <a class="btn-ghost" href="tutorial.html">查看教程</a>
         </div>
         <div class="hero-meta"><b>免费下载</b> · Windows 10 / 11 · 64 位 · 内置 30+ 种动作 · 真后台运行不占鼠标 · 国内高速源</div>
@@ -345,15 +345,18 @@
   <div class="wrap">
     <div class="download-cta">
       <h2>现在就下载脚本喵</h2>
-      <p class="lead">单文件 EXE, 下载即用 — 无需安装 Python 环境, 双击即启动。</p>
+      <p class="lead">共 <b>3 个版本</b>，按你的用途选一个即可 —— 都无需安装 Python，下载即用。</p>
       <div class="hero-btns" style="justify-content:center">
-        <a class="btn-primary" href="download.html">安装版 v1.3.51 (28 MB)</a>
-        <a class="btn-ghost" href="download.html">免安装单文件 (96 MB)</a>
-        <a class="btn-ghost" href="download.html">脚本喵运行器 (93 MB)</a>
+        <a class="btn-primary" href="download.html">📦 完整版 v1.3.52（28 MB · 推荐）</a>
+        <a class="btn-ghost" href="download.html">⚡ 单文件版（96 MB · 免安装）</a>
+        <a class="btn-ghost" href="download.html">▶ 运行器 v1.3.51（93 MB）</a>
       </div>
       <div class="hero-meta" style="margin-top:18px">Windows 10 / 11 · 64 位 · 首次启动约 8 秒解压 · 鼠标移到屏幕左上角可紧急停止</div>
       <p style="margin-top:10px; font-size:13px; color: var(--text-d)">
-        ▶ <b>脚本喵运行器</b>：只想一键运行别人给的脚本、不想编辑？下载它 — 界面极简，没有编辑功能，打开就跑。
+          <b>三个版本的区别</b>（都在同一个下载页）：<br>
+          📦 <b>完整版</b>（推荐）：功能最全，含文字识别，可在「程序和功能」里卸载 —— <b>想自己编辑脚本就选它</b><br>
+          ⚡ <b>单文件版</b>：免安装绿色版，双击即用，<b>不含文字识别</b>；适合 U 盘随身带<br>
+          ▶ <b>运行器</b>：只能运行别人的脚本，<b>不能编辑</b>，界面极简，打开就跑
       </p>
       <p style="margin-top:14px; font-size:13px">
         💡 首次运行若提示「无法验证此文件是否安全」或「未知发布者」，属 Windows 对未签名程序的常规提醒，
@@ -380,7 +383,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 脚本喵 · 让自动化更简单 · 完整版 v1.3.51 · 运行器 v1.3.51 · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · 完整版 v1.3.52 · 运行器 v1.3.51 · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
 </footer>
 
 <script>
@@ -390,7 +393,7 @@ hamburger.addEventListener('click', function () { navLinks.classList.toggle('ope
 navLinks.addEventListener('click', function (e) { if (e.target.tagName === 'A') navLinks.classList.remove('open'); });
 const path = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.navlinks a').forEach(function (a) { if (a.getAttribute('href') === path) a.classList.add('cur'); });
-const DEFAULT_DL = 'https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.link/' + encodeURIComponent('脚本喵安装器_v1351.exe');
+const DEFAULT_DL = 'https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.link/' + encodeURIComponent('脚本喵安装器_v1352.exe');
 const EXE_URL = 'https://b65bb4931b71411c97d3b7b2825549ac.app.workbuddy.link/' + encodeURIComponent('脚本喵.exe');
 const params = new URLSearchParams(location.search);
 const url = params.get('dl') || DEFAULT_DL;
