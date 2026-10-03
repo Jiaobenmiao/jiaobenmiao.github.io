@@ -3,4 +3,4 @@ Allow: /
 Disallow: /licgen.html
 Disallow: /licgen
 
-Sitemap: https://jiaobenmiao.github.io/sitemap.xml
+Sitemap: https://jiaobenmao.com/sitemap.xml
