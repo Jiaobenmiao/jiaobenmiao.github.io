@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>杀毒误报怎么办 - 安装后打不开/被拦截的解决办法 | 脚本喵官方</title>
+<meta name="description" content="脚本喵安装后打不开、双击没反应、被杀毒软件拦截的完整解决办法：SmartScreen 放行步骤、Windows Defender/360/电脑管家/火绒白名单设置、启动日志上报与误报申诉入口。">
+<meta property="og:title" content="杀毒误报怎么办 - 脚本喵">
+<meta property="og:description" content="安装后打不开？双击没反应？本页给你完整自救步骤。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jiaobenmao.com/antivirus.html">
+<meta property="og:image" content="https://jiaobenmao.com/icon_512.png">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff; --bg-soft: #f7f8fa; --panel: #ffffff;
+    --border: #e5e7eb; --border-d: #d0d7de;
+    --text: #1f2328; --text-d: #656d76; --text-d2: #8c959f;
+    --accent: #2ea9dd; --accent-d: #1e88e5; --accent-soft: rgba(46,169,221,.08);
+    --warn: #b8860b;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md: 0 6px 24px rgba(0,0,0,.08);
+    --shadow-lg: 0 18px 48px rgba(46,169,221,.18);
+  }
+  html, body { background: var(--bg); color: var(--text); font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  a { color: var(--accent-d); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 16px 0; background: rgba(255,255,255,.85); border-bottom: 1px solid var(--border); position: sticky; top: 0; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100; }
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--text); }
+  .brand img { width: 30px; height: 30px; border-radius: 7px; }
+  .navlinks { display: flex; align-items: center; gap: 4px; }
+  .navlinks a { color: var(--text-d); margin-left: 20px; font-size: 14px; padding: 4px 0; }
+  .navlinks a:hover { color: var(--accent-d); text-decoration: none; }
+  .navlinks a.cur { color: var(--accent-d); font-weight: 600; }
+  .nav-dl { margin-left: 22px; background: var(--accent); color: #fff !important; font-weight: 600; padding: 8px 18px; border-radius: 8px; font-size: 13px !important; box-shadow: 0 2px 8px rgba(46,169,221,.25); }
+  .nav-dl:hover { background: var(--accent-d); text-decoration: none; }
+  .hamburger { display: none; background: none; border: 1px solid var(--border); color: var(--text); font-size: 18px; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+
+  .page { padding: 56px 0 24px; }
+  .page h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; color: var(--text); letter-spacing: .3px; }
+  .page .lead { color: var(--text-d); font-size: 15.5px; max-width: 720px; margin-bottom: 36px; }
+  section.block { padding: 44px 0; border-top: 1px solid var(--border); }
+  section h2 { font-size: 26px; margin-bottom: 16px; font-weight: 800; color: var(--text); }
+  section h2 .num { color: var(--accent-d); margin-right: 10px; }
+
+  .btn-primary { display: inline-block; padding: 13px 30px; font-size: 15px; font-weight: 700; background: var(--accent); color: #fff; border-radius: 10px; box-shadow: 0 4px 14px rgba(46,169,221,.25); transition: all .18s; }
+  .btn-primary:hover { background: var(--accent-d); transform: translateY(-1px); text-decoration: none; box-shadow: 0 8px 22px rgba(46,169,221,.3); }
+  .btn-ghost { display: inline-block; padding: 13px 28px; font-size: 15px; font-weight: 600; background: transparent; color: var(--text); border: 1px solid var(--border-d); border-radius: 10px; transition: all .18s; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-d); text-decoration: none; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: all .2s; }
+  .card:hover { border-color: rgba(46,169,221,.45); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+
+  /* 🚨 (2026-09-28 天行者) 完整版卡片「高亮放大凸显」——
+     整行 + 主色边框 + 渐变底 + 角标，让用户一眼看见"该下哪个"。
+     另两个版本卡片在下面并排（auto-fit 网格自然两列）。*/
+  .card.best { grid-column: 1 / -1; position: relative; padding: 28px 26px;
+    border: 2px solid var(--accent);
+    background: linear-gradient(135deg, var(--accent-soft), #ffffff 62%);
+    box-shadow: 0 10px 30px rgba(46,169,221,.16); }
+  .card.best:hover { border-color: var(--accent-d); transform: translateY(-3px);
+    box-shadow: 0 14px 38px rgba(46,169,221,.24); }
+  .card.best h3 { font-size: 19px; }
+  .card.best .btn-primary { padding: 15px 38px; font-size: 16px; }
+  .card-best-tag { position: absolute; top: -12px; left: 26px;
+    background: var(--accent); color: #fff; font-size: 12px; font-weight: 700;
+    padding: 4px 13px; border-radius: 999px;
+    box-shadow: 0 3px 10px rgba(46,169,221,.35); letter-spacing: .3px; }
+  @media (max-width: 700px) {
+    .card.best { padding: 24px 18px; }
+    .card.best .btn-primary { padding: 13px 26px; font-size: 15px; }
+  }
+  .card p, .card li { color: var(--text-d); font-size: 13.5px; }
+  .card ul { list-style: none; padding: 0; }
+  .card li { padding: 4px 0; }
+  .card li::before { content: "✓ "; color: var(--accent-d); font-weight: 700; }
+  .dl-meta { margin-top: 14px; color: var(--text-d2); font-size: 12.5px; }
+
+  .note { background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 22px 0; color: var(--text-d); font-size: 14px; }
+
+  .faq { max-width: 800px; }
+  details.faq-item { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 11px; margin-bottom: 10px; }
+  details.faq-item summary { cursor: pointer; padding: 16px 20px; font-size: 14.5px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--accent-d); font-size: 20px; font-weight: 700; }
+  details.faq-item[open] summary::after { content: "-"; }
+  details.faq-item .fa { padding: 0 20px 16px; color: var(--text-d); font-size: 13.5px; }
+
+
+  /* 安装时安全提示图文指引 */
+  .guide { display: flex; flex-direction: column; gap: 18px; }
+  .step { display: flex; gap: 16px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+  .step .n { flex: 0 0 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .step > div { flex: 1; }
+  .step b { color: var(--text); font-size: 14.5px; }
+  .step p { color: var(--text-d); font-size: 13.5px; margin: 6px 0 10px; }
+  .step img { max-width: 100%; width: 420px; border: 1px solid var(--border-d); border-radius: 8px; display: block; }
+
+  footer { padding: 34px 0; text-align: center; color: var(--text-d2); font-size: 13px; border-top: 1px solid var(--border); margin-top: 20px; }
+  footer a { color: var(--text-d); }
+
+  @media (max-width: 800px) {
+    .hamburger { display: block; }
+    .navlinks { display: none; position: absolute; top: 60px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); flex-direction: column; align-items: stretch; padding: 10px 24px 16px; }
+    .navlinks.open { display: flex; }
+    .navlinks a { margin: 0; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .navlinks .nav-dl { margin: 12px 0 0; text-align: center; }
+    .page h1 { font-size: 28px; }
+    section h2 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="scriptmeow.png" alt="脚本喵"><span>脚本喵</span></a>
+    <div class="navlinks" id="navLinks">
+      <a href="index.html">首页</a>
+      <a href="download.html">下载</a>
+      <a href="tutorial.html">教程</a>
+      <a href="activate.html">激活码</a>
+      <a class="cur" href="antivirus.html">误报怎么办</a>
+      <a class="nav-dl" href="download.html">立即下载</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="菜单">=</button>
+  </div>
+</header>
+
+<div class="wrap page">
+  <h1>杀毒误报 / 安装后打不开，怎么办</h1>
+  <p class="lead">脚本喵是 Windows 自动化工具（模拟鼠标键盘、识别屏幕内容），这类行为与部分木马特征重合，加上软件尚未购买代码签名证书，<b>被杀毒软件误报、被 SmartScreen 拦截是常见现象</b>。按本页步骤操作即可正常使用，你的系统没有任何问题。</p>
+
+  <div class="note">📌 <b>先说结论</b>：① 下载后首次运行弹「Windows 已保护你的电脑」→ 点「更多信息」→「仍要运行」；② 安装后双击没反应 → 十有八九是杀毒把程序文件拦了，把安装目录加进白名单再启动；③ 还不行 → 把 <code>%TEMP%\jiaobenmiao_boot.log</code> 发给作者，一看便知。</div>
+
+  <h2>一、按症状对号入座</h2>
+  <section class="grid">
+    <div class="card">
+      <h3>🚫 下载时就被拦 / 安装包被删</h3>
+      <ul>
+        <li>浏览器下载完成即提示「有病毒」或文件消失</li>
+        <li>先在杀毒软件里<b>恢复</b>该文件，再把安装包加入白名单/信任区，重新安装</li>
+        <li>务必从官网 <a href="download.html">jiaobenmao.com</a> 下载，别用第三方转发版</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🖱 双击图标完全没反应</h3>
+      <ul>
+        <li>最常见：杀毒在安装解压时<b>悄悄吞掉</b>了程序文件</li>
+        <li>安装完成页若提示「关键文件缺失」，就是它 —— 加白名单后重装</li>
+        <li>打开任务管理器看有无 <code>脚本喵.exe</code> 进程：闪一下就没了 = 被当场拦截</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>⚠️ 首次运行弹「Windows 已保护你的电脑」</h3>
+      <ul>
+        <li>这是 Windows SmartScreen，不是病毒</li>
+        <li>点弹窗上的「<b>更多信息</b>」→「<b>仍要运行</b>」即可，只需一次</li>
+        <li>详见<a href="download.html#smartscreen">下载页图示</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <h2>二、把脚本喵加入白名单（按你的杀毒软件选）</h2>
+  <section>
+    <div class="card">
+      <h3>🛡 Windows Defender（Win10/11 自带）</h3>
+      <div class="step"><span class="n">1</span><div><b>打开设置</b><p>Windows 安全中心 →「病毒和威胁防护」→「管理设置」</p></div></div>
+      <div class="step"><span class="n">2</span><div><b>添加排除项</b><p>「添加或删除排除项」→「添加文件夹」→ 选择安装目录（默认 <code>C://Program Files\脚本喵</code>）</p></div></div>
+      <div class="step"><span class="n">3</span><div><b>恢复被拦文件</b><p>「保护历史记录」里若有脚本喵相关记录，选「允许」；然后重新安装一次</p></div></div>
+    </div>
+    <div class="card">
+      <h3>🔵 360 安全卫士</h3>
+      <div class="step"><span class="n">1</span><div><b>木马查杀 → 恢复区/信任区</b><p>若脚本喵被隔离，选「恢复」并「加入信任」</p></div></div>
+      <div class="step"><span class="n">2</span><div><b>手动加信任</b><p>「木马查杀」→「信任区」→「添加目录」→ 选择 <code>C://Program Files\脚本喵</code></p></div></div>
+      <div class="step"><span class="n">3</span><div><b>重装</b><p>加完白名单再运行安装器，避免再次被吞文件</p></div></div>
+    </div>
+    <div class="card">
+      <h3>🟢 腾讯电脑管家</h3>
+      <div class="step"><span class="n">1</span><div><b>病毒查杀 → 隔离区</b><p>找到脚本喵相关文件，选「恢复」</p></div></div>
+      <div class="step"><span class="n">2</span><div><b>添加信任</b><p>「设置中心 → 信任区」→ 添加安装目录；或「实时防护」里允许脚本喵</p></div></div>
+    </div>
+    <div class="card">
+      <h3>🟠 火绒安全</h3>
+      <div class="step"><span class="n">1</span><div><b>病毒查杀 → 隔离区</b><p>恢复被拦文件</p></div></div>
+      <div class="step"><span class="n">2</span><div><b>信任区</b><p>「安全工具 → 信任区」→ 添加 <code>C://Program Files\脚本喵</code> 整个目录</p></div></div>
+    </div>
+  </section>
+
+  <h2>三、还是打不开？把日志发给作者（10 秒定位）</h2>
+  <section>
+    <div class="card">
+      <h3>📋 启动日志在哪</h3>
+      <p>脚本喵每次启动都会写一份「启动日志」，死在哪一步里面写得清清楚楚：</p>
+      <div class="step"><span class="n">1</span><div><b>按 Win+R</b><p>输入 <code>%TEMP%</code> 回车，打开临时文件夹</p></div></div>
+      <div class="step"><span class="n">2</span><div><b>找文件</b><p>把 <code>jiaobenmiao_boot.log</code>（若还有 <code>jiaobenmiao_boot.crash.log</code> 一并）发给作者</p></div></div>
+      <div class="step"><span class="n">3</span><div><b>顺手确认</b><p>安装目录里 <code>_internal</code> 文件夹是否在、是否有一万多个文件（缺文件就是被杀毒吞了）</p></div></div>
+      <p style="margin-top:10px">反馈渠道：售后 QQ 群 <b>1108351043</b>。</p>
+    </div>
+    <div class="card">
+      <h3>📮 帮我们申诉误报（治本）</h3>
+      <p>我们已向以下厂商提交误报申诉，人工复核后会加白名单。如你愿意，也可通过 VirusTotal 查看检测详情协助反馈：</p>
+      <ul>
+        <li>微软 Defender：microsoft.com/en-us/wdsi/filesubmission</li>
+        <li>360 开放平台：open.soft.360.cn</li>
+        <li>腾讯电脑管家反馈：guanjia.qq.com</li>
+        <li>火绒论坛：bbs.huorong.cn</li>
+      </ul>
+      <p>软件<b>不注入任何进程、不上传任何数据、纯本地运行</b>，误报源于自动化工具的行为特征与无签名证书，感谢理解。</p>
+    </div>
+  </section>
+
+  <div class="note" style="margin-top:24px">💡 <b>给老用户的一句话</b>：如果以前能正常用、某次更新后打不开了，基本都是杀毒升级了新特征库 —— 把安装目录加进白名单即可，无需重装。</div>
+</div>
+
+<footer>
+  <div class="wrap">© 脚本喵 · 让自动化更简单 · 完整版 v1.3.53 · 运行器 v1.3.52 · <a href="index.html">首页</a> · <a href="download.html">下载</a> · <a href="tutorial.html">教程</a> · <a href="activate.html">激活码</a></div>
+  <div class="wrap" style="margin-top:8px">
+    <a id="icp" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener"
+       style="display:none; color:var(--text-d2); font-size:12.5px">粤ICP备XXXXXXXX号-1</a>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', function () { navLinks.classList.toggle('open'); });
+navLinks.addEventListener('click', function (e) { if (e.target.tagName === 'A') navLinks.classList.remove('open'); });
+const path = location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.navlinks a').forEach(function (a) { if (a.getAttribute('href') === path) a.classList.add('cur'); });
+</script>
+</body>
+</html>

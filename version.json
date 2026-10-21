@@ -1,8 +1,8 @@
 {
-  "version": "1.3.52",
-  "url": "https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.host/%E8%84%9A%E6%9C%AC%E5%96%B5%E5%AE%89%E8%A3%85%E5%99%A8_v1352.exe",
-  "sha256": "8f8d40643208c1545e5984d6424b36126a523d98674f4db4985f50a279f818d0",
-  "size": 28368072,
+  "version": "1.3.53",
+  "url": "https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.host/%E8%84%9A%E6%9C%AC%E5%96%B5%E5%AE%89%E8%A3%85%E5%99%A8_v1353.exe",
+  "sha256": "7eb6b1b52382b09a73a5f4221b368bc817f8f94991b678495e2f6ddc55c5314e",
+  "size": 28377277,
   "notes": "自动更新：启动后台检查+静默下载，关闭软件时自动安装，下次打开即最新版",
   "paused": false,
   "runner": {
