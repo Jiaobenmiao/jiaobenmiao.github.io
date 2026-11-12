@@ -1,13 +1,13 @@
 {
-  "version": "1.3.56",
-  "url": "https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.host/%E8%84%9A%E6%9C%AC%E5%96%B5%E5%AE%89%E8%A3%85%E5%99%A8_v1356.exe",
-  "sha256": "608d28938e5869cdbd010642417de37c631919a34275676f6d673517f96a3df1",
-  "size": 28463731,
+  "version": "1.3.57",
+  "url": "https://71b1651573994153b6e8deec1e3d4c6a.app.workbuddy.host/%E8%84%9A%E6%9C%AC%E5%96%B5%E5%AE%89%E8%A3%85%E5%99%A8_v1357.exe",
+  "sha256": "207a02be5f469d7d1b76261bad82ad8d73760d6d29430aa907d52fb4dd72c150",
+  "size": 28463290,
   "notes": "自动更新：启动后台检查+静默下载，关闭软件时自动安装，下次打开即最新版",
   "paused": false,
   "runner": {
     "version": "1.3.52",
-    "sha256": "06339bb9f04c7d80641fef47f3366617e9d5eac92c286bb0296a744efa0e294c",
-    "size": 92521019
+    "sha256": "5bcee807010e5ec06e51c029d7acb82c14072e42305816be58cdee9a00964f1c",
+    "size": 92540920
   }
 }
